@@ -1,0 +1,1004 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Interlude Media, partner kreatif Anda: website & sistem, aplikasi Android, dan IoT. Permanent atau langganan.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Interlude Media</title>
+<link rel="icon" href="/logo.svg" type="image/svg+xml">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: dark "control room" hero with a live product mockup → light blueprint body with package cards, system tiles, process, calculator, FAQ → dark CTA band. */
+:root{
+  --paper:#f2f5fa; --paper-2:#e6ebf3; --card:#ffffff; --ink:#111b33; --ink-soft:#56627c; --line:#d3dae6;
+  --navy:#0b1430; --navy-2:#131f45; --on-navy:#eef2ff; --on-navy-soft:#a9b4d6;
+  --blue:#2457f5; --blue-soft:#e1e8fe; --cyan:#22c3e6; --gold:#c4860f; --gold-2:#f3c35a; --gold-soft:#fbf0d9; --green:#18a957;
+  --grid:rgba(36,87,245,.06);
+  --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --f-body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0c1222; --paper-2:#151e34; --card:#121a2e; --ink:#e8edf8; --ink-soft:#a1acc4; --line:#26314d;
+  --navy:#060b1c; --navy-2:#0f1834; --blue:#6f90ff; --blue-soft:#18244a; --gold-soft:#2f240e; --grid:rgba(111,144,255,.06); color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --paper:#0c1222; --paper-2:#151e34; --card:#121a2e; --ink:#e8edf8; --ink-soft:#a1acc4; --line:#26314d;
+  --navy:#060b1c; --navy-2:#0f1834; --blue:#6f90ff; --blue-soft:#18244a; --gold-soft:#2f240e; --grid:rgba(111,144,255,.06); color-scheme:dark;}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+[id]{scroll-margin-top:80px}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--navy)}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.06}
+p{margin:0}
+.label{font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 15px var(--f-body);text-decoration:none;border-radius:8px;padding:13px 20px;border:0;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--gold-2);color:#1c1405;box-shadow:0 10px 30px -10px rgba(243,195,90,.7)}
+.btn-ghost{background:transparent;color:var(--on-navy);border:1px solid rgba(255,255,255,.25)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.sec{padding-block:88px 0}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:18px;margin-bottom:28px}
+.sec-head h2{font-size:clamp(30px,4.2vw,48px);font-weight:800;letter-spacing:-.02em;max-width:18ch}
+.sec-head p{color:var(--ink-soft);max-width:46ch}
+
+/* ===== HERO ===== */
+.hero{background:var(--navy);color:var(--on-navy);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(600px 380px at 85% 20%, rgba(34,195,230,.22), transparent 70%),
+  radial-gradient(520px 360px at 10% 110%, rgba(243,195,90,.16), transparent 70%),
+  linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px) 0 0/32px 32px,
+  linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px) 0 0/32px 32px;pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding-block:72px 84px}
+.pill{display:inline-flex;align-items:center;gap:8px;font:500 12px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);background:rgba(34,195,230,.1);border:1px solid rgba(34,195,230,.35);padding:6px 12px;border-radius:999px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(24,169,87,.6);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 8px rgba(24,169,87,0)}100%{box-shadow:0 0 0 0 rgba(24,169,87,0)}}
+.hero h1{font-size:clamp(40px,6vw,78px);font-weight:800;letter-spacing:-.03em;margin-top:20px}
+.hero h1 .hl{background:linear-gradient(90deg,var(--gold-2),#ffe2a0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{font-size:clamp(17px,1.9vw,20px);color:var(--on-navy-soft);max-width:52ch;margin-top:20px}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.stats{display:flex;flex-wrap:wrap;gap:14px 36px;margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12)}
+.stats strong{display:block;font:800 28px var(--f-display);color:#fff}
+.stats span{font-size:13px;color:var(--on-navy-soft)}
+
+/* mockup */
+.mock{position:relative;min-width:0}
+.browser{background:#fff;border-radius:12px;box-shadow:0 40px 80px -30px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.08);overflow:hidden;color:#111b33;transform:perspective(1400px) rotateY(-8deg) rotateX(3deg)}
+.chrome{display:flex;align-items:center;gap:6px;padding:10px 12px;background:#eef1f7;border-bottom:1px solid #dde3ee}
+.chrome i{width:10px;height:10px;border-radius:50%;background:#f26b5b}.chrome i:nth-child(2){background:#f5bf4f}.chrome i:nth-child(3){background:#5ac26b}
+.url{margin-left:10px;flex:1;background:#fff;border-radius:6px;font:500 11px var(--f-mono);color:#6b7690;padding:4px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.app{display:grid;grid-template-columns:92px 1fr;min-height:300px}
+.side{background:#111b33;padding:14px 10px;display:flex;flex-direction:column;gap:8px}
+.side b{height:8px;border-radius:4px;background:rgba(255,255,255,.18)}.side b:first-child{background:var(--gold-2);width:70%;margin-bottom:8px}
+.main{padding:16px;display:grid;gap:12px;align-content:start}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.kpi{border:1px solid #e2e7f0;border-radius:8px;padding:8px}
+.kpi small{display:block;font:500 9px var(--f-mono);color:#6b7690;text-transform:uppercase;letter-spacing:.06em}
+.kpi strong{font:800 16px var(--f-display)}
+.kpi em{font-style:normal;font-size:10px;color:var(--green);font-weight:700}
+.chart{border:1px solid #e2e7f0;border-radius:8px;padding:10px;height:130px;display:flex;align-items:end;gap:6px}
+.chart span{flex:1;background:linear-gradient(#2457f5,#22c3e6);border-radius:3px 3px 0 0;transform-origin:bottom;animation:grow 1.2s cubic-bezier(.2,.8,.2,1) both}
+@keyframes grow{from{transform:scaleY(.15)}}
+.phone{position:absolute;right:-6px;bottom:-34px;width:132px;background:#0b1430;border-radius:20px;padding:8px;box-shadow:0 30px 50px -20px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.12)}
+.phone .scr{background:#f2f5fa;border-radius:14px;padding:10px;display:grid;gap:7px}
+.phone .sw{display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:8px;padding:6px 8px;font:600 9px var(--f-body);color:#111b33}
+.tg{width:22px;height:12px;border-radius:999px;background:#18a957;position:relative}.tg::after{content:"";position:absolute;right:2px;top:2px;width:8px;height:8px;border-radius:50%;background:#fff}
+.tg.off{background:#c9d1df}.tg.off::after{right:auto;left:2px}
+.phone .tt{font:800 11px var(--f-display);color:#111b33}
+.phone .temp{font:800 22px var(--f-display);color:#2457f5}
+.float{position:absolute;left:-18px;top:34%;background:#fff;color:#111b33;border-radius:10px;padding:10px 12px;font-size:12px;box-shadow:0 20px 40px -18px rgba(0,0,0,.6);display:flex;gap:10px;align-items:center;animation:bob 5s ease-in-out infinite}
+.float .ic{width:28px;height:28px;border-radius:8px;background:#e5f6ec;display:grid;place-items:center;color:#18a957}
+.float b{display:block;font-size:13px}
+@keyframes bob{50%{transform:translateY(-8px)}}
+
+/* ===== MARQUEE ===== */
+.ticker{background:var(--gold-2);color:#1c1405;overflow:hidden;white-space:nowrap;border-block:1px solid rgba(0,0,0,.08)}
+.ticker .track{display:inline-flex;gap:40px;padding-block:12px;animation:slide 40s linear infinite;font:700 15px var(--f-display)}
+.ticker .track span::after{content:"✦";margin-left:40px;opacity:.5}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ===== PLANS ===== */
+.toggle{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px;box-shadow:0 6px 20px -12px rgba(17,27,51,.3)}
+.toggle button{font:700 14px var(--f-body);border:0;background:transparent;color:var(--ink-soft);padding:10px 18px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
+.toggle button[aria-pressed="true"]{background:var(--blue);color:#fff}
+.plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px;display:flex;flex-direction:column;gap:20px;position:relative;min-width:0;transition:transform .2s ease, box-shadow .2s ease}
+.plan:hover{transform:translateY(-4px);box-shadow:0 30px 60px -30px rgba(17,27,51,.35)}
+.plan.gold{border:2px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(135deg,var(--gold-2),var(--gold),var(--gold-2)) border-box}
+.ribbon{position:absolute;top:-14px;right:24px;background:linear-gradient(90deg,var(--gold),var(--gold-2));color:#1c1405;font:700 12px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;box-shadow:0 8px 20px -8px rgba(196,134,15,.7)}
+.plan .head{display:flex;gap:14px;align-items:center}
+.medal{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;flex:none;background:linear-gradient(145deg,#eef1f6,#bfc7d4);color:#3b475f}
+.gold .medal{background:linear-gradient(145deg,#ffe7a8,#d99a1c);color:#5a3a00}
+.plan h3{font-size:30px;font-weight:800}
+.plan .head p{color:var(--ink-soft);font-size:14px}
+.price{padding:18px;border-radius:12px;background:var(--paper)}
+.price .big{display:block;font:800 clamp(32px,3.8vw,44px) var(--f-display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.price .big small{font-size:.38em;font-weight:500;color:var(--ink-soft);letter-spacing:0}
+.price .sub{color:var(--ink-soft);font-size:14px}
+.spec{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.spec li{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start}
+.spec li::before{content:"";width:22px;height:22px;border-radius:50%;background:var(--blue-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232457f5' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/12px no-repeat}
+.gold .spec li::before{background-color:var(--gold-soft);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c4860f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E")}
+.fit{font-size:14px;color:var(--ink-soft);margin-top:auto;padding-top:16px;border-top:1px dashed var(--line)}
+.fit b{color:var(--ink)}
+.plan .btn{justify-content:center;background:var(--ink);color:var(--paper)}
+.gold .btn{background:linear-gradient(90deg,var(--gold),var(--gold-2));color:#1c1405}
+
+/* ===== SYSTEMS ===== */
+.systems{display:grid;grid-template-columns:1.3fr 1fr;gap:24px}
+.sys{border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:18px;min-width:0;position:relative;overflow:hidden;color:var(--on-navy)}
+.sys.custom{background:var(--navy-2)}
+.sys.iot{background:linear-gradient(150deg,#1d44d6,#1393c4)}
+.sys .label{color:rgba(238,242,255,.7)}
+.sys h3{font-size:clamp(26px,3vw,34px);font-weight:800}
+.sys .range{display:inline-block;align-self:start;font:800 22px var(--f-display);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:6px 14px;border-radius:10px;font-variant-numeric:tabular-nums}
+.sys p{color:rgba(238,242,255,.82)}
+.mods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.mod{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:14px;transition:background .2s}
+.mod:hover{background:rgba(255,255,255,.12)}
+.mod svg{width:22px;height:22px;color:var(--gold-2)}
+.iot-live{background:rgba(6,11,28,.35);border-radius:12px;padding:14px;display:grid;gap:10px;position:relative;z-index:1}
+.iot-row{display:flex;justify-content:space-between;align-items:center;font-size:14px}
+.iot-row .v{font:600 14px var(--f-mono);font-variant-numeric:tabular-nums}
+.sys canvas{width:100%;height:80px;display:block}
+
+/* ===== PROCESS ===== */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;counter-reset:s}
+.step{position:relative;padding-top:20px}
+.step::before{counter-increment:s;content:"0" counter(s);font:800 44px var(--f-display);color:var(--blue);opacity:.9;display:block;line-height:1}
+.step::after{content:"";position:absolute;top:42px;left:72px;right:-10px;height:2px;background:repeating-linear-gradient(90deg,var(--line) 0 6px,transparent 6px 12px)}
+.step:last-child::after{display:none}
+.step h3{font-size:20px;margin-top:14px}
+.step p{color:var(--ink-soft);font-size:15px;margin-top:6px}
+
+/* ===== CALC ===== */
+.calc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
+.months{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:8px}
+.months input{flex:1;min-width:200px;accent-color:var(--blue);height:28px}
+.months output{font:800 26px var(--f-display);min-width:120px}
+.calc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:20px}
+.cmp{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;min-width:0}
+.cmp h3{font-size:22px;margin-bottom:10px}
+.row{display:grid;grid-template-columns:100px 1fr auto;gap:12px;align-items:center;margin-top:12px;font-size:14px;font-weight:600}
+.track{height:12px;background:var(--paper-2);border-radius:999px;overflow:hidden}
+.fill{height:100%;background:var(--ink-soft);border-radius:999px;transition:width .3s ease}
+.fill.win{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.row .v{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.verdict{margin-top:16px;font-size:14px;color:var(--ink-soft)}
+.badge{display:inline-block;font:700 12px var(--f-mono);padding:3px 8px;border-radius:6px;background:var(--blue-soft);color:var(--blue);margin-right:6px}
+
+/* ===== FAQ ===== */
+.faq{display:grid;gap:12px;max-width:820px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 22px}
+summary{cursor:pointer;font:700 17px var(--f-display);list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:500 22px var(--f-mono);color:var(--blue);line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--ink-soft);margin-top:10px}
+
+/* ===== CTA ===== */
+.cta{margin-top:96px;background:var(--navy);color:var(--on-navy);position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;inset:0;background:radial-gradient(500px 300px at 90% 0%,rgba(243,195,90,.2),transparent 70%),radial-gradient(500px 300px at 0% 100%,rgba(34,195,230,.18),transparent 70%)}
+.cta .wrap{position:relative;padding-block:72px 80px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.cta h2{font-size:clamp(32px,4.6vw,56px);font-weight:800;letter-spacing:-.02em}
+.cta p{color:var(--on-navy-soft);margin-top:14px;max-width:48ch}
+.contact-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:24px;display:grid;gap:14px}
+.contact-card .label{color:var(--on-navy-soft)}
+.contact{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.contact span{font:600 22px var(--f-mono);user-select:all;color:#fff}
+.small{font-size:13px;color:var(--on-navy-soft)}
+
+/* ===== NAV ===== */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--navy) 94%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav .wrap{display:flex;align-items:center;gap:12px 16px;min-height:62px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;font:800 17px var(--f-display);text-decoration:none;margin-right:auto}
+.brand i{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--gold-2),var(--cyan));flex:none}
+.brand img{height:42px;width:auto;display:block;flex:none}
+.brand span{line-height:1.1}
+.brand small{display:block;font:500 10px var(--f-mono);color:var(--on-navy-soft);letter-spacing:.1em;text-transform:uppercase;margin-top:3px}
+.wa-btn{background:#25d366;color:#05301a}
+.nav-links{display:flex;gap:4px}
+.nav-links a{color:var(--on-navy-soft);text-decoration:none;font:600 14px var(--f-body);padding:8px 12px;border-radius:8px;white-space:nowrap}
+.nav-links a:hover{color:#fff}
+.nav-links a[aria-current="page"]{color:#fff;background:rgba(255,255,255,.12)}
+.nav .btn{padding:9px 14px;font-size:14px}
+
+/* ===== APLIKASI ===== */
+.phones{display:flex;justify-content:center;gap:18px;align-items:flex-end;padding-block:20px}
+.ph{width:210px;max-width:47%;background:#0b1430;border-radius:30px;padding:9px;box-shadow:0 40px 70px -30px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.12);flex:none}
+.phones .ph:first-child{transform:translateY(-22px) rotate(-4deg)}
+.phones .ph:last-child{transform:rotate(4deg)}
+.ph .scr{background:#f2f5fa;border-radius:22px;overflow:hidden;color:#111b33;min-height:370px;display:flex;flex-direction:column}
+.ph .top{background:#2457f5;color:#fff;padding:18px 14px;font:800 15px var(--f-display)}
+.ph .top small{display:block;font:500 10px var(--f-body);opacity:.85;margin-bottom:2px}
+.ph .top.dark{background:#111b33}
+.ph .body{padding:10px;display:grid;gap:8px;flex:1;align-content:start}
+.prod{display:grid;grid-template-columns:36px 1fr auto;gap:8px;align-items:center;background:#fff;border-radius:10px;padding:7px;font-size:11px;font-weight:600}
+.prod i{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,#ffe7a8,#f3c35a)}
+.prod:nth-child(2) i{background:linear-gradient(135deg,#cfe0ff,#6f90ff)}
+.prod:nth-child(3) i{background:linear-gradient(135deg,#c9f2dc,#18a957)}
+.prod b{font:700 10px var(--f-mono);color:#2457f5}
+.cart{background:#f3c35a;color:#1c1405;border-radius:10px;padding:9px;text-align:center;font:700 12px var(--f-body)}
+.tabbar{display:flex;justify-content:space-around;padding:10px;background:#fff;border-top:1px solid #e2e7f0}
+.tabbar span{width:18px;height:18px;border-radius:5px;background:#c9d1df}.tabbar span:first-child{background:#2457f5}
+.map{height:140px;border-radius:12px;position:relative;overflow:hidden;background:#dfe9d8;background-image:linear-gradient(90deg,transparent 46%,#fff 46%,#fff 52%,transparent 52%),linear-gradient(transparent 60%,#fff 60%,#fff 66%,transparent 66%),linear-gradient(35deg,transparent 70%,#cfe0ff 70%)}
+.map::after{content:"";position:absolute;left:47%;top:38%;width:18px;height:18px;border-radius:50% 50% 50% 0;background:#f26b5b;transform:rotate(-45deg);box-shadow:0 0 0 6px rgba(242,107,91,.25)}
+.absen{background:#18a957;color:#fff;text-align:center;border-radius:10px;padding:11px;font:700 13px var(--f-body)}
+.ph .info{background:#fff;border-radius:10px;padding:9px;font-size:11px;display:flex;justify-content:space-between}
+.ph .info b{font-family:var(--f-mono)}
+.types{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.type{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:10px;min-width:0;transition:transform .2s ease,box-shadow .2s ease}
+.type:hover{transform:translateY(-3px);box-shadow:0 24px 50px -30px rgba(17,27,51,.35)}
+.type .ic{width:46px;height:46px;border-radius:12px;background:var(--blue-soft);color:var(--blue);display:grid;place-items:center}
+.type .ic svg{width:24px;height:24px}
+.type h3{font-size:20px}
+.type p{color:var(--ink-soft);font-size:15px}
+.feats{display:flex;flex-wrap:wrap;gap:10px}
+.feats span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-weight:600;font-size:14px}
+.deal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+
+/* ===== IOT ===== */
+.flow{display:flex;align-items:stretch}
+.node{flex:1;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.node .k{font:600 11px var(--f-mono);color:var(--blue);letter-spacing:.08em;text-transform:uppercase}
+.node h3{font-size:18px;margin-top:6px}
+.node p{font-size:14px;color:var(--ink-soft);margin-top:4px}
+.arrow{display:grid;place-items:center;width:34px;flex:none;color:var(--blue);font:700 20px var(--f-mono)}
+.demo{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;background:var(--navy-2);color:var(--on-navy);border-radius:20px;padding:28px}
+.demo .label{color:var(--on-navy-soft)}
+.demo h3{font-size:24px;margin-top:4px}
+.gauges{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+.gauge{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:14px;min-width:0}
+.gauge small{font:500 11px var(--f-mono);color:var(--on-navy-soft);text-transform:uppercase;letter-spacing:.06em}
+.gauge strong{display:block;font:800 clamp(22px,2.6vw,30px) var(--f-display);font-variant-numeric:tabular-nums}
+.gauge .meter{height:6px;background:rgba(255,255,255,.12);border-radius:9px;margin-top:8px;overflow:hidden}
+.gauge .meter i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--gold-2));transition:width .6s ease}
+.demo canvas{width:100%;height:160px;display:block;margin-top:14px;background:rgba(0,0,0,.22);border-radius:12px}
+.legend{display:flex;gap:16px;font:500 12px var(--f-mono);color:var(--on-navy-soft);margin-top:8px}
+.legend i{display:inline-block;width:10px;height:3px;margin-right:6px;vertical-align:middle}
+.ctrls{display:grid;gap:10px;align-content:start}
+.sw-row{display:flex;justify-content:space-between;align-items:center;gap:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 14px;font-weight:600}
+.sw-row small{display:block;font-weight:400;font-size:12px;color:var(--on-navy-soft)}
+.switch{appearance:none;-webkit-appearance:none;width:46px;height:26px;border-radius:999px;background:#3a4668;position:relative;cursor:pointer;transition:background .2s;flex:none;margin:0}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .2s}
+.switch:checked{background:var(--green)}
+.switch:checked::after{left:23px}
+.log{font:500 12px var(--f-mono);color:var(--on-navy-soft);background:rgba(0,0,0,.28);border-radius:12px;padding:12px;height:150px;overflow:auto;display:flex;flex-direction:column;gap:4px}
+.log b{color:var(--gold-2);font-weight:600}
+.priceband{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;background:linear-gradient(150deg,#1d44d6,#1393c4);color:#fff;border-radius:20px;padding:32px}
+.priceband .big{display:block;font:800 clamp(34px,5vw,56px) var(--f-display);letter-spacing:-.02em}
+.priceband p{color:rgba(255,255,255,.85);max-width:52ch}
+.ph .scr.dk{background:#0f1834;color:#eef2ff}
+.ph .scr.dk .info{background:rgba(255,255,255,.08);color:#eef2ff}
+.ph .scr.dk .sw{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.08);border-radius:10px;padding:9px;font:600 12px var(--f-body)}
+.big-num{font:800 34px var(--f-display);color:#22c3e6;padding:4px 2px}
+.sys .btn-ghost{align-self:start;margin-top:4px}
+
+/* ===== TENTANG ===== */
+.stairs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;align-items:end;padding-top:20px}
+.stair{background:linear-gradient(180deg,#2f63ff,#1a3fb8);color:#fff;border-radius:12px 12px 4px 4px;padding:16px 14px;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;min-width:0;box-shadow:0 20px 40px -24px rgba(0,0,0,.7);transform-origin:bottom;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.stair:nth-child(1){height:130px}.stair:nth-child(2){height:190px;animation-delay:.12s}.stair:nth-child(3){height:250px;animation-delay:.24s}
+.stair:nth-child(4){height:320px;animation-delay:.36s;background:linear-gradient(180deg,var(--gold-2),var(--gold));color:#1c1405;position:relative}
+.stair:nth-child(4)::before{content:"↑ Grow profit";position:absolute;top:-34px;left:0;right:0;text-align:center;font:700 13px var(--f-mono);color:var(--gold-2);letter-spacing:.04em}
+@keyframes rise{from{transform:scaleY(.2)}}
+.stair .n{font:600 11px var(--f-mono);letter-spacing:.08em;opacity:.8}
+.stair h3{font-size:clamp(15px,1.8vw,20px)}
+.stair p{font-size:12.5px;line-height:1.4;opacity:.88}
+.fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.promise{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.promise .type{border-top:4px solid var(--gold-2)}
+.quote{background:var(--navy-2);color:var(--on-navy);border-radius:20px;padding:56px 36px;position:relative;overflow:hidden}
+.quote::before{content:"“";position:absolute;right:24px;top:-40px;font:800 260px/1 var(--f-display);color:rgba(243,195,90,.12)}
+.quote blockquote{margin:0;font:800 clamp(30px,4.8vw,58px)/1.08 var(--f-display);letter-spacing:-.02em;max-width:18ch;position:relative}
+.quote blockquote .hl{background:linear-gradient(90deg,var(--gold-2),#ffe2a0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.quote p{color:var(--on-navy-soft);margin-top:20px;max-width:52ch;font-size:18px;position:relative}
+.trio{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;position:relative}
+.trio span{border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:8px 16px;font-weight:700}
+
+@media (max-width:920px){
+  .fields{grid-template-columns:1fr}
+  .promise{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .stair{padding:10px 8px}
+  .stair p{display:none}
+  .stair:nth-child(1){height:100px}.stair:nth-child(2){height:150px}.stair:nth-child(3){height:200px}.stair:nth-child(4){height:250px}
+  .quote{padding:40px 22px}
+}
+@media (max-width:920px){
+  .types,.uses{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .demo,.deal{grid-template-columns:1fr}
+  .flow{flex-direction:column}
+  .arrow{width:auto;height:30px;transform:rotate(90deg)}
+}
+@media (max-width:640px){
+  .nav-links{order:3;width:100%;overflow-x:auto;padding-bottom:8px}
+  .types,.uses{grid-template-columns:1fr}
+  .gauges{grid-template-columns:1fr 1fr 1fr;gap:8px}
+  .gauge{padding:10px}
+  .demo{padding:20px}
+}
+@media (max-width:920px){
+  .hero .wrap,.cta .wrap{grid-template-columns:1fr}
+  .mock{max-width:520px;margin-bottom:30px}
+  .plans,.systems,.calc-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .step::after{display:none}
+}
+@media (max-width:520px){
+  .mods{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:1fr}
+  .row{grid-template-columns:90px 1fr}.row .v{grid-column:1/-1}
+  .phone{width:110px;right:0}
+  .float{left:-4px}
+  .plan,.sys,.calc{padding:22px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Menu utama">
+  <div class="wrap">
+    <a class="brand" href="#web"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMTAxIDEzMzYiIHdpZHRoPSIxMTAxIiBoZWlnaHQ9IjEzMzYiPjxkZWZzPg0KPGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIwLjM1IiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRjFEOUEwIi8+PHN0b3Agb2Zmc2V0PSIwLjM1IiBzdG9wLWNvbG9yPSIjRDRCMDZBIi8+PHN0b3Agb2Zmc2V0PSIwLjciIHN0b3AtY29sb3I9IiNDOUEzNUMiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM4QzZBMkMiLz48L2xpbmVhckdyYWRpZW50Pg0KPHBhdHRlcm4gaWQ9ImgiIHdpZHRoPSI1IiBoZWlnaHQ9IjUiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgzNSkiPg0KPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjUiIHN0cm9rZT0iIzVhNDAxMiIgc3Ryb2tlLXdpZHRoPSIxLjQiIHN0cm9rZS1vcGFjaXR5PSIuNTUiLz48L3BhdHRlcm4+DQo8cGF0dGVybiBpZD0iaDIiIHdpZHRoPSIxMSIgaGVpZ2h0PSIxMSIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKC01MCkiPg0KPGxpbmUgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjExIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2Utb3BhY2l0eT0iLjIyIi8+PC9wYXR0ZXJuPg0KPGNsaXBQYXRoIGlkPSJjIj48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSg5LjI2IDEwNDAuMDApIHNjYWxlKDAuODE5MjEgLTEuNDEyNDMpIiBkPSJNMzIxLjMyMDU1NjY0MDYyNSA3MDhWNjg4UTI4OC41ODIwMzQ3ODgyNjk5NCA2ODcgMjcxLjczMTMyNTAxMTMyMjUgNjgwLjVRMjU0Ljg4MDYxNTIzNDM3NSA2NzQgMjQ5LjIwMDYyMjU1ODU5Mzc1IDY1Ni41UTI0My41MjA2Mjk4ODI4MTI1IDYzOSAyNDMuNTIwNjI5ODgyODEyNSA2MDJWMTA2UTI0My41MjA2Mjk4ODI4MTI1IDcwIDI0OS4yODM1ODc0MjA0MjgyMyA1Mi4wUTI1NS4wNDY1NDQ5NTgwNDM5NyAzNCAyNzEuODU1MTcxMTA5NDIzMiAyOC4wUTI4OC42NjM3OTcyNjA4MDI1IDIyIDMyMS4zMjA1NTY2NDA2MjUgMjBWMFEyOTYuNDAwNTEyNjk1MzEyNSAyIDI1OC4zODA0MzIxMjg5MDYyNSAyLjVRMjIwLjM2MDM1MTU2MjUgMyAxODEuNTIwMjYzNjcxODc1IDNRMTM3LjY0NTE1MjA5MTk3OTk4IDMgOTkuMzk1MDU0ODE3MTk5NyAyLjVRNjEuMTQ0OTU3NTQyNDE5NDM0IDIgMzcuNTE5ODk3NDYwOTM3NSAwVjIwUTcwLjU1OTg3NTQ4ODI4MTI1IDIyIDg3LjIyNTgxMzg0NTM3MDY4IDI4LjBRMTAzLjg5MTc1MjIwMjQ2MDExIDM0IDEwOS42MDU3ODgyMTA2MDUwNiA1Mi4wUTExNS4zMTk4MjQyMTg3NSA3MCAxMTUuMzE5ODI0MjE4NzUgMTA2VjYwMlExMTUuMzE5ODI0MjE4NzUgNjM5IDEwOS41NjQ5MzYyMTE3Njg2MSA2NTYuNVExMDMuODEwMDQ4MjA0Nzg3MjQgNjc0IDg3LjAyNDk1ODE4NDQyNDg2IDY4MC41UTcwLjIzOTg2ODE2NDA2MjUgNjg3IDM3LjUxOTg5NzQ2MDkzNzUgNjg4VjcwOFE2MS4xNDQ5NTc1NDI0MTk0MzQgNzA3IDk5LjM5NTA1NDgxNzE5OTcgNzA2LjBRMTM3LjY0NTE1MjA5MTk3OTk4IDcwNSAxODEuNTIwMjYzNjcxODc1IDcwNVEyMjAuMzYwMzUxNTYyNSA3MDUgMjU4LjM4MDQzMjEyODkwNjI1IDcwNi4wUTI5Ni40MDA1MTI2OTUzMTI1IDcwNyAzMjEuMzIwNTU2NjQwNjI1IDcwOFoiLz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMDkuOTcgNDk1LjAwKSBzY2FsZSgwLjY0MjY2IC0wLjY0MjY2KSIgZD0iTTg2My41NjA3OTEwMTU2MjUgNzA4VjY4OFE4MzAuODQwODIwMzEyNSA2ODcgODEzLjk4MDgzNDk2MDkzNzUgNjgwLjVRNzk3LjEyMDg0OTYwOTM3NSA2NzQgNzkxLjQ0MDg1NjkzMzU5MzggNjU2LjVRNzg1Ljc2MDg2NDI1NzgxMjUgNjM5IDc4NS43NjA4NjQyNTc4MTI1IDYwMlYxMDZRNzg1Ljc2MDg2NDI1NzgxMjUgNzAgNzkxLjYwMDg2MDU5NTcwMzEgNTIuMFE3OTcuNDQwODU2OTMzNTkzOCAzNCA4MTQuMTQwODM4NjIzMDQ2OSAyOC4wUTgzMC44NDA4MjAzMTI1IDIyIDg2My41NjA3OTEwMTU2MjUgMjBWMFE4MzguMDAwNzMyNDIxODc1IDIgNzk5LjE4MDYzMzU0NDkyMTkgMi41UTc2MC4zNjA1MzQ2Njc5Njg4IDMgNzIwLjU2MDQyNDgwNDY4NzUgM1E2NzYuNzYwMzE0OTQxNDA2MiAzIDYzOC40NDAyMTYwNjQ0NTMxIDIuNVE2MDAuMTIwMTE3MTg3NSAyIDU3Ni41NjAwNTg1OTM3NSAwVjIwUTYxMC41NjAwNTg1OTM3NSAyMiA2MjguMDYwMDU4NTkzNzUgMjguMFE2NDUuNTYwMDU4NTkzNzUgMzQgNjUxLjU2MDA1ODU5Mzc1IDUyLjBRNjU3LjU2MDA1ODU5Mzc1IDcwIDY1Ny41NjAwNTg1OTM3NSAxMDZWNjUxLjE5OTg5MDEzNjcxODhMNjYzLjQ4MDEwMjUzOTA2MjUgNjQ5Ljc5OTkyNjc1NzgxMjVMNDE2LjU2MDA1ODU5Mzc1IC0zLjA3OTk1NjA1NDY4NzVINDAwLjU2MDA1ODU5Mzc1TDEzOC45NTk4Mzg4NjcxODc1IDY0My42Nzk5OTI2NzU3ODEyVjE0MS42MDA1ODU5Mzc1UTEzOC45NTk4Mzg4NjcxODc1IDk1LjY4MDM1ODg4NjcxODc1IDE0NS4xMzk4MzE1NDI5Njg3NSA3MC4zODAyNDkwMjM0Mzc1UTE1MS4zMTk4MjQyMTg3NSA0NS4wODAxMzkxNjAxNTYyNSAxNzEuNDU5ODM4ODY3MTg3NSAzNC4zNDAwODc4OTA2MjVRMTkxLjU5OTg1MzUxNTYyNSAyMy42MDAwMzY2MjEwOTM3NSAyMzMuMTU5OTEyMTA5Mzc1IDIwVjBRMjE0LjUxOTg5NzQ2MDkzNzUgMiAxODQuNTU5ODc1NDg4MjgxMjUgMi41UTE1NC41OTk4NTM1MTU2MjUgMyAxMjcuOTU5ODM4ODY3MTg3NSAzUTEwMy45MTk4NjA4Mzk4NDM3NSAzIDc5LjIxOTg3OTE1MDM5MDYyIDIuNVE1NC41MTk4OTc0NjA5Mzc1IDIgMzguMTU5OTEyMTA5Mzc1IDBWMjBRNzEuMTk5ODkwMTM2NzE4NzUgMjMuNjAwMDM2NjIxMDkzNzUgODcuODk5ODcxODI2MTcxODggMzQuMDIwMDgwNTY2NDA2MjVRMTA0LjU5OTg1MzUxNTYyNSA0NC40NDAxMjQ1MTE3MTg3NSAxMTAuMjc5ODQ2MTkxNDA2MjUgNjguNjIwMjA4NzQwMjM0MzhRMTE1Ljk1OTgzODg2NzE4NzUgOTIuODAwMjkyOTY4NzUgMTE1Ljk1OTgzODg2NzE4NzUgMTM1LjIwMDQzOTQ1MzEyNVY2MDJRMTE1Ljk1OTgzODg2NzE4NzUgNjM5IDExMC4yNzk4NDYxOTE0MDYyNSA2NTYuNVExMDQuNTk5ODUzNTE1NjI1IDY3NCA4Ny43Mzk4NjgxNjQwNjI1IDY4MC41UTcwLjg3OTg4MjgxMjUgNjg3IDM4LjE1OTkxMjEwOTM3NSA2ODhWNzA4UTU0LjUxOTg5NzQ2MDkzNzUgNzA3IDc5LjIxOTg3OTE1MDM5MDYyIDcwNi4wUTEwMy45MTk4NjA4Mzk4NDM3NSA3MDUgMTI3Ljk1OTgzODg2NzE4NzUgNzA1UTE2MS40ODAxMDI1MzkwNjI1IDcwNSAxOTQuNDIwMzE4NjAzNTE1NjIgNzA2LjBRMjI3LjM2MDUzNDY2Nzk2ODc1IDcwNyAyNTIuMDAwNzMyNDIxODc1IDcwOEw0NjkuNzIwNTIwMDE5NTMxMjUgMTU4LjY0MTExMzI4MTI1TDQ0OC41NjA0MjQ4MDQ2ODc1IDE0Mi42NDA5MzAxNzU3ODEyNUw2NjAuNzYwMTMxODM1OTM3NSA3MDVRNjc1LjMyMDE5MDQyOTY4NzUgNzA1IDY5MC41MDAyNzQ2NTgyMDMxIDcwNS4wUTcwNS42ODAzNTg4ODY3MTg4IDcwNSA3MjAuNTYwNDI0ODA0Njg3NSA3MDVRNzYwLjM2MDUzNDY2Nzk2ODggNzA1IDc5OS4xODA2MzM1NDQ5MjE5IDcwNi4wUTgzOC4wMDA3MzI0MjE4NzUgNzA3IDg2My41NjA3OTEwMTU2MjUgNzA4WiIvPjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIyMC4zOCAxMDQwLjAwKSBzY2FsZSgwLjY0MjY2IC0wLjY0MjY2KSIgZD0iTTM3LjUxOTg5NzQ2MDkzNzUgNzA4UTYxLjA3OTk1NjA1NDY4NzUgNzA3IDk5LjQwMDA1NDkzMTY0MDYyIDcwNi4wUTEzNy43MjAxNTM4MDg1OTM3NSA3MDUgMTc1LjUyMDI2MzY3MTg3NSA3MDVRMjIzLjQ4MDI4NTY0NDUzMTI1IDcwNSAyNjcuNDQwMzA3NjE3MTg3NSA3MDYuMFEzMTEuNDAwMzI5NTg5ODQzNzUgNzA3IDMyOS43MjAzMzY5MTQwNjI1IDcwN1E0NjAuNjQwNTYzOTY0ODQzNzUgNzA3IDUyNS4yODA2NzAxNjYwMTU2IDY1Mi4wUTU4OS45MjA3NzYzNjcxODc1IDU5NyA1ODkuOTIwNzc2MzY3MTg3NSA1MTBRNTg5LjkyMDc3NjM2NzE4NzUgNDc0IDU3Ni45NjA3NTQzOTQ1MzEyIDQzNC41UTU2NC4wMDA3MzI0MjE4NzUgMzk1IDUzMi40MjA2ODQ4MTQ0NTMxIDM2MS41UTUwMC44NDA2MzcyMDcwMzEyNSAzMjggNDQ2LjE2MDU1Mjk3ODUxNTYgMzA3LjBRMzkxLjQ4MDQ2ODc1IDI4NiAzMDcuNzIwMzM2OTE0MDYyNSAyODZIMjA4LjUyMDI2MzY3MTg3NVYzMDZIMjk3LjcyMDMzNjkxNDA2MjVRMzYyLjMyMDE5MDQyOTY4NzUgMzA2IDM5Ni4zMDAxMDk4NjMyODEyNSAzMzMuMFE0MzAuMjgwMDI5Mjk2ODc1IDM2MCA0NDIuNSA0MDQuMFE0NTQuNzE5OTcwNzAzMTI1IDQ0OCA0NTQuNzE5OTcwNzAzMTI1IDQ5OVE0NTQuNzE5OTcwNzAzMTI1IDU5NCA0MjIuMzQwMDg3ODkwNjI1IDY0MS4wUTM4OS45NjAyMDUwNzgxMjUgNjg4IDMxMS4xMjA0ODMzOTg0Mzc1IDY4OFEyNjguOTYwNTcxMjg5MDYyNSA2ODggMjU2LjI0MDYwMDU4NTkzNzUgNjcxLjBRMjQzLjUyMDYyOTg4MjgxMjUgNjU0IDI0My41MjA2Mjk4ODI4MTI1IDYwMlYxMDkuMjAwMDczMjQyMTg3NVEyNDMuNTIwNjI5ODgyODEyNSA3MS42MDAwMzY2MjEwOTM3NSAyNTEuMzQwNjM3MjA3MDMxMjUgNTIuOTYwMDIxOTcyNjU2MjVRMjU5LjE2MDY0NDUzMTI1IDM0LjMyMDAwNzMyNDIxODc1IDI4MS44MDA2NTkxNzk2ODc1IDI4LjMyMDAwNzMyNDIxODc1UTMwNC40NDA2NzM4MjgxMjUgMjIuMzIwMDA3MzI0MjE4NzUgMzQ3LjcyMDcwMzEyNSAyMC45NjAwMjE5NzI2NTYyNVYwUTMxOS4xNjA2NDQ1MzEyNSAxLjY3OTk5MjY3NTc4MTI1IDI3NC4zNjA1MzQ2Njc5Njg3NSAyLjMzOTk5NjMzNzg5MDYyNVEyMjkuNTYwNDI0ODA0Njg3NSAzIDE4MS44NDAyNzA5OTYwOTM3NSAzUTE0MC42MDAyMTk3MjY1NjI1IDMgMTAyLjc2MDEzMTgzNTkzNzUgMi4zMzk5OTYzMzc4OTA2MjVRNjQuOTIwMDQzOTQ1MzEyNSAxLjY3OTk5MjY3NTc4MTI1IDM3LjUxOTg5NzQ2MDkzNzUgMFYyMFE3MC41NTk4NzU0ODgyODEyNSAyMiA4Ny4yNTk4NTcxNzc3MzQzOCAyOC4wUTEwMy45NTk4Mzg4NjcxODc1IDM0IDEwOS42Mzk4MzE1NDI5Njg3NSA1Mi4wUTExNS4zMTk4MjQyMTg3NSA3MCAxMTUuMzE5ODI0MjE4NzUgMTA2VjYwMlExMTUuMzE5ODI0MjE4NzUgNjM5IDEwOS42Mzk4MzE1NDI5Njg3NSA2NTYuNVExMDMuOTU5ODM4ODY3MTg3NSA2NzQgODcuMDk5ODUzNTE1NjI1IDY4MC41UTcwLjIzOTg2ODE2NDA2MjUgNjg3IDM3LjUxOTg5NzQ2MDkzNzUgNjg4WiIvPjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU1Ny4zOCAxMDQwLjAwKSBzY2FsZSgwLjY0MjY2IC0wLjY0MjY2KSIgZD0iTTY1NC42ODA5MDgyMDMxMjUgNzA4VjY4OC4zMjAwMDczMjQyMTg4UTYyMi43MjA4ODYyMzA0Njg4IDY4Mi43MTk5NzA3MDMxMjUgNTg5LjcyMDc5NDY3NzczNDQgNjY0LjE1OTkxMjEwOTM3NVE1NTYuNzIwNzAzMTI1IDY0NS41OTk4NTM1MTU2MjUgNTIxLjk2MDU3MTI4OTA2MjUgNjAzLjQ3OTczNjMyODEyNUwzMzEuODQwNjM3MjA3MDMxMjUgMzY4LjY0MDAxNDY0ODQzNzVMMzcyLjcyMTA2OTMzNTkzNzUgNDM1Ljg4MDQzMjEyODkwNjI1TDYxMS43NjEwNDczNjMyODEyIDgxUTYyNy40ODEwMTgwNjY0MDYyIDU3LjI4MDAyOTI5Njg3NSA2NDUuMjQwOTY2Nzk2ODc1IDQzLjI4MDAyOTI5Njg3NVE2NjMuMDAwOTE1NTI3MzQzOCAyOS4yODAwMjkyOTY4NzUgNjkxLjEyMDg0OTYwOTM3NSAyMFYwUTY2MS4zNjA3MTc3NzM0Mzc1IDIgNjIyLjAyMDYyOTg4MjgxMjUgMi41UTU4Mi42ODA1NDE5OTIxODc1IDMgNTUxLjkyMDQxMDE1NjI1IDNRNTMzLjAwMDM2NjIxMDkzNzUgMyA1MDUuNDYwMjk2NjMwODU5NCAyLjVRNDc3LjkyMDIyNzA1MDc4MTI1IDIgNDM2LjEyMDExNzE4NzUgMFYyMFE0NzQuMjgwMjEyNDAyMzQzNzUgMjIgNDgyLjgwMDIwMTQxNjAxNTYgMzEuNjc5OTkyNjc1NzgxMjVRNDkxLjMyMDE5MDQyOTY4NzUgNDEuMzU5OTg1MzUxNTYyNSA0NzUuNjQwMTk3NzUzOTA2MjUgNjVMMzI5Ljk2MDIwNTA3ODEyNSAyOTMuMDAwMTgzMTA1NDY4NzVRMzEzLjE2MDI3ODMyMDMxMjUgMzE5Ljg0MDA4Nzg5MDYyNSAzMDAuMDYwMzMzMjUxOTUzMSAzMzMuMjYwMDQwMjgzMjAzMVEyODYuOTYwMzg4MTgzNTkzNzUgMzQ2LjY3OTk5MjY3NTc4MTI1IDI3My4zNDA0NTQxMDE1NjI1IDM1MS4zNTk5ODUzNTE1NjI1UTI1OS43MjA1MjAwMTk1MzEyNSAzNTYuMDM5OTc4MDI3MzQzNzUgMjM4Ljg4MDYxNTIzNDM3NSAzNTcuMDM5OTc4MDI3MzQzNzVWMzc3LjM1OTk4NTM1MTU2MjVRMjgxLjUyMDYyOTg4MjgxMjUgMzc4LjY3OTk5MjY3NTc4MTI1IDMxMy4zODA3MDY3ODcxMDk0IDM5OC4wMjAwODA1NjY0MDYyNVEzNDUuMjQwNzgzNjkxNDA2MjUgNDE3LjM2MDE2ODQ1NzAzMTI1IDM3NS43NjEwNDczNjMyODEyNSA0NTMuNTIwNDQ2Nzc3MzQzNzVMNDUxLjkyMDU5MzI2MTcxODc1IDU0OC42Mzk4MzE1NDI5Njg4UTQ4Ny44MDA2NTkxNzk2ODc1IDU5Mi4yMzk4NjgxNjQwNjI1IDQ5Ni43NjA1ODk1OTk2MDk0IDYyMi45OTk5MDg0NDcyNjU2UTUwNS43MjA1MjAwMTk1MzEyNSA2NTMuNzU5OTQ4NzMwNDY4OCA0ODkuMzYwNDQzMTE1MjM0NCA2NzAuNTM5OTc4MDI3MzQzOFE0NzMuMDAwMzY2MjEwOTM3NSA2ODcuMzIwMDA3MzI0MjE4OCA0MzIuMjgwMzk1NTA3ODEyNSA2ODguMzIwMDA3MzI0MjE4OFY3MDhRNDU0LjE2MDQ2MTQyNTc4MTI1IDcwNyA0NzUuNjAwNDk0Mzg0NzY1NiA3MDYuNVE0OTcuMDQwNTI3MzQzNzUgNzA2IDUxOS4xMDA1ODU5Mzc1IDcwNS41UTU0MS4xNjA2NDQ1MzEyNSA3MDUgNTY0LjU2MDc5MTAxNTYyNSA3MDVRNTkyLjQ4MDgzNDk2MDkzNzUgNzA1IDYxNS4yODA4NTMyNzE0ODQ0IDcwNi4wUTYzOC4wODA4NzE1ODIwMzEyIDcwNyA2NTQuNjgwOTA4MjAzMTI1IDcwOFpNMzIxLjMyMDU1NjY0MDYyNSA3MDhWNjg4UTI4OC42MDA1ODU5Mzc1IDY4NyAyNzEuNzQwNjAwNTg1OTM3NSA2ODAuNVEyNTQuODgwNjE1MjM0Mzc1IDY3NCAyNDkuMjAwNjIyNTU4NTkzNzUgNjU2LjVRMjQzLjUyMDYyOTg4MjgxMjUgNjM5IDI0My41MjA2Mjk4ODI4MTI1IDYwMlYxMDZRMjQzLjUyMDYyOTg4MjgxMjUgNzAgMjQ5LjM2MDYyNjIyMDcwMzEyIDUyLjBRMjU1LjIwMDYyMjU1ODU5Mzc1IDM0IDI3MS45MDA2MDQyNDgwNDY5IDI4LjBRMjg4LjYwMDU4NTkzNzUgMjIgMzIxLjMyMDU1NjY0MDYyNSAyMFYwUTI5Ni40MDA1MTI2OTUzMTI1IDIgMjU4LjM4MDQzMjEyODkwNjI1IDIuNVEyMjAuMzYwMzUxNTYyNSAzIDE4MS41MjAyNjM2NzE4NzUgM1ExMzcuNzIwMTUzODA4NTkzNzUgMyA5OS40MDAwNTQ5MzE2NDA2MiAyLjVRNjEuMDc5OTU2MDU0Njg3NSAyIDM3LjUxOTg5NzQ2MDkzNzUgMFYyMFE3MC41NTk4NzU0ODgyODEyNSAyMiA4Ny4yNTk4NTcxNzc3MzQzOCAyOC4wUTEwMy45NTk4Mzg4NjcxODc1IDM0IDEwOS42Mzk4MzE1NDI5Njg3NSA1Mi4wUTExNS4zMTk4MjQyMTg3NSA3MCAxMTUuMzE5ODI0MjE4NzUgMTA2VjYwMlExMTUuMzE5ODI0MjE4NzUgNjM5IDEwOS42Mzk4MzE1NDI5Njg3NSA2NTYuNVExMDMuOTU5ODM4ODY3MTg3NSA2NzQgODcuMDk5ODUzNTE1NjI1IDY4MC41UTcwLjIzOTg2ODE2NDA2MjUgNjg3IDM3LjUxOTg5NzQ2MDkzNzUgNjg4VjcwOFE2MS4wNzk5NTYwNTQ2ODc1IDcwNyA5OS40MDAwNTQ5MzE2NDA2MiA3MDYuMFExMzcuNzIwMTUzODA4NTkzNzUgNzA1IDE4MS41MjAyNjM2NzE4NzUgNzA1UTIyMC4zNjAzNTE1NjI1IDcwNSAyNTguMzgwNDMyMTI4OTA2MjUgNzA2LjBRMjk2LjQwMDUxMjY5NTMxMjUgNzA3IDMyMS4zMjA1NTY2NDA2MjUgNzA4WiIvPjxyZWN0IHg9IjI2NC41IiB5PSI1MzUuMCIgd2lkdGg9IjczNy4wIiBoZWlnaHQ9IjEwIi8+PHBhdGggZD0iTTE2Ny42IDEwMzYuMiBMMTcxLjYgMTA0My4zIEwxNzUuNyAxMDUwLjQgTDE4MC4zIDEwNTcuMiBMMTg1LjMgMTA2My44IEwxOTAuNyAxMDcwLjIgTDE5Ni42IDEwNzYuMyBMMjAyLjkgMTA4Mi4xIEwyMDkuNiAxMDg3LjcgTDIxNi42IDEwOTMuMCBMMjI0LjAgMTA5OC4wIEwyMzEuOCAxMTAyLjggTDIzOS45IDExMDcuMyBMMjQ4LjQgMTExMS42IEwyNTcuMSAxMTE1LjYgTDI2Ni4xIDExMTkuNCBMMjc1LjQgMTEyMi45IEwyODQuOSAxMTI2LjEgTDI5NC43IDExMjkuMiBMMzA0LjcgMTEzMi4wIEwzMTUuMCAxMTM0LjcgTDMyNS40IDExMzcuMSBMMzM2LjEgMTEzOS40IEwzNDYuOSAxMTQxLjQgTDM1Ny45IDExNDMuMyBMMzY5LjEgMTE0NS4wIEwzODAuNCAxMTQ2LjYgTDM5MS45IDExNDguMSBMNDAzLjUgMTE0OS40IEw0MTUuMyAxMTUwLjYgTDQyNy4yIDExNTEuNiBMNDM5LjIgMTE1Mi42IEw0NTEuMyAxMTUzLjUgTDQ2My41IDExNTQuMyBMNDc1LjggMTE1NS4wIEw0ODguMSAxMTU1LjYgTDUwMC42IDExNTYuMiBMNTEzLjEgMTE1Ni44IEw1MjUuNyAxMTU3LjMgTDUzOC40IDExNTcuOCBMNTUxLjEgMTE1OC4yIEw1NjMuOSAxMTU3LjYgTDU3Ni43IDExNTcuMSBMNTg5LjYgMTE1Ni43IEw2MDIuNSAxMTU2LjMgTDYxNS40IDExNTYuMCBMNjI4LjMgMTE1NS44IEw2NDEuMyAxMTU1LjcgTDY1NC4zIDExNTUuOCBMNjY3LjMgMTE1Ni4wIEw2ODAuMyAxMTU2LjMgTDY5My4zIDExNTYuOCBMNzA2LjMgMTE1Ny40IEw3MTkuMyAxMTU4LjMgTDczMi4yIDExNTkuMyBMNzQ1LjIgMTE2MC41IEw3NTguMSAxMTYxLjkgTDc3MC45IDExNjMuNSBMNzgzLjggMTE2NS4zIEw3OTYuNSAxMTY3LjQgTDgwOS4zIDExNjkuNyBMODIxLjkgMTE3Mi4zIEw4MzQuNSAxMTc1LjEgTDg0Ny4wIDExNzguMyBMODU5LjUgMTE4MS43IEw4NzEuOSAxMTg1LjQgTDg4NC4xIDExODkuNSBMODk2LjMgMTE5My45IEw5MDguNCAxMTk4LjYgTDkyMC4zIDEyMDMuNiBMOTMyLjIgMTIwOS4wIEw5NDMuOSAxMjE0LjggTDk1NS40IDEyMjEuMCBMOTY2LjggMTIyNy42IEw5NzguMSAxMjM0LjYgTDk4OS4yIDEyNDIuMCBMMTAwMC4xIDEyNDkuOSBMMTAxMC44IDEyNTguMiBMMTAyMS4zIDEyNjcuMCBMMTAzMS41IDEyNzYuMyBMMTA0MS4zIDEyODYuMiBMMTA0MS44IDEyODUuOCBMMTAzMS45IDEyNzUuOSBMMTAyMS45IDEyNjYuMyBMMTAxMS45IDEyNTYuOSBMMTAwMS42IDEyNDguMCBMOTkxLjIgMTIzOS4zIEw5ODAuNiAxMjMxLjAgTDk2OS44IDEyMjMuMSBMOTU4LjggMTIxNS41IEw5NDcuNyAxMjA4LjIgTDkzNi40IDEyMDEuMiBMOTI0LjkgMTE5NC41IEw5MTMuMiAxMTg4LjIgTDkwMS41IDExODIuMSBMODg5LjUgMTE3Ni4zIEw4NzcuNCAxMTcwLjcgTDg2NS4yIDExNjUuNSBMODUyLjkgMTE2MC41IEw4NDAuNCAxMTU1LjggTDgyNy44IDExNTEuMiBMODE1LjIgMTE0Ny4wIEw4MDIuNCAxMTQyLjkgTDc4OS42IDExMzkuMSBMNzc2LjYgMTEzNS41IEw3NjMuNiAxMTMyLjAgTDc1MC42IDExMjguOCBMNzM3LjUgMTEyNS43IEw3MjQuMyAxMTIyLjkgTDcxMS4xIDExMjAuMSBMNjk3LjkgMTExNy41IEw2ODQuNyAxMTE1LjEgTDY3MS40IDExMTIuOCBMNjU4LjIgMTExMC42IEw2NDUuMCAxMTA4LjUgTDYzMS43IDExMDYuNSBMNjE4LjUgMTEwNC43IEw2MDUuNCAxMTAyLjkgTDU5Mi4zIDExMDEuMSBMNTc5LjIgMTA5OS41IEw1NjYuMyAxMDk3LjggTDU1My4zIDEwOTYuMyBMNTQwLjUgMTA5NS44IEw1MjcuNyAxMDk1LjUgTDUxNS4wIDEwOTUuMiBMNTAyLjUgMTA5NS4wIEw0OTAuMCAxMDk0LjggTDQ3Ny43IDEwOTQuNyBMNDY1LjUgMTA5NC42IEw0NTMuNSAxMDk0LjUgTDQ0MS42IDEwOTQuNSBMNDI5LjggMTA5NC40IEw0MTguMiAxMDk0LjMgTDQwNi44IDEwOTQuMiBMMzk1LjUgMTA5NC4xIEwzODQuNCAxMDkzLjkgTDM3My41IDEwOTMuNyBMMzYyLjggMTA5My40IEwzNTIuMyAxMDkzLjAgTDM0Mi4wIDEwOTIuNiBMMzMxLjggMTA5Mi4wIEwzMjEuOSAxMDkxLjQgTDMxMi4yIDEwOTAuNiBMMzAyLjcgMTA4OS43IEwyOTMuNCAxMDg4LjcgTDI4NC4zIDEwODcuNSBMMjc1LjUgMTA4Ni4yIEwyNjYuOCAxMDg0LjcgTDI1OC40IDEwODMuMCBMMjUwLjIgMTA4MS4xIEwyNDIuMSAxMDc5LjAgTDIzNC40IDEwNzYuNyBMMjI2LjggMTA3NC4xIEwyMTkuNCAxMDcxLjIgTDIxMi4yIDEwNjguMSBMMjA1LjIgMTA2NC42IEwxOTguNSAxMDYwLjggTDE5MS45IDEwNTYuNyBMMTg1LjUgMTA1Mi4yIEwxNzkuNCAxMDQ3LjIgTDE3My41IDEwNDEuOCBMMTY4LjEgMTAzNS44IFoiLz48cGF0aCBkPSJNMjI3LjcgMTA5Ni4yIEwyMzQuNCAxMTAyLjIgTDI0MS4zIDExMDguMiBMMjQ4LjQgMTExMy45IEwyNTUuNyAxMTE5LjMgTDI2My4zIDExMjQuNSBMMjcxLjEgMTEyOS41IEwyNzkuMSAxMTM0LjIgTDI4Ny40IDExMzguNyBMMjk1LjggMTE0My4wIEwzMDQuNSAxMTQ3LjAgTDMxMy4zIDExNTAuOSBMMzIyLjQgMTE1NC41IEwzMzEuNiAxMTU3LjkgTDM0MS4wIDExNjEuMSBMMzUwLjUgMTE2NC4yIEwzNjAuMiAxMTY3LjAgTDM3MC4wIDExNjkuNyBMMzgwLjAgMTE3Mi4yIEwzOTAuMSAxMTc0LjUgTDQwMC4zIDExNzYuNyBMNDEwLjYgMTE3OC43IEw0MjEuMCAxMTgwLjYgTDQzMS41IDExODIuNCBMNDQyLjEgMTE4NC4wIEw0NTIuOCAxMTg1LjUgTDQ2My42IDExODYuOSBMNDc0LjQgMTE4OC4yIEw0ODUuMyAxMTg5LjUgTDQ5Ni4yIDExOTAuNiBMNTA3LjIgMTE5MS42IEw1MTguMiAxMTkyLjYgTDUyOS4yIDExOTMuNSBMNTQwLjMgMTE5NC4zIEw1NTEuMyAxMTk1LjEgTDU2Mi40IDExOTUuOCBMNTczLjUgMTE5Ni42IEw1ODQuNiAxMTk3LjIgTDU5NS43IDExOTcuOSBMNjA2LjcgMTE5OC42IEw2MTcuNyAxMTk5LjIgTDYyOC44IDExOTkuNSBMNjM5LjcgMTE5OS44IEw2NTAuNyAxMjAwLjEgTDY2MS42IDEyMDAuNSBMNjcyLjQgMTIwMC45IEw2ODMuMiAxMjAxLjQgTDY5My45IDEyMDIuMCBMNzA0LjUgMTIwMi43IEw3MTUuMSAxMjAzLjQgTDcyNS42IDEyMDQuMyBMNzM2LjAgMTIwNS4yIEw3NDYuMyAxMjA2LjMgTDc1Ni41IDEyMDcuNSBMNzY2LjYgMTIwOC44IEw3NzYuNSAxMjEwLjMgTDc4Ni40IDEyMTEuOSBMNzk2LjEgMTIxMy42IEw4MDUuNyAxMjE1LjUgTDgxNS4yIDEyMTcuNiBMODI0LjUgMTIxOS45IEw4MzMuNyAxMjIyLjQgTDg0Mi43IDEyMjUuMCBMODUxLjYgMTIyNy45IEw4NjAuMyAxMjMwLjkgTDg2OC44IDEyMzQuMiBMODc3LjIgMTIzNy43IEw4ODUuNCAxMjQxLjUgTDg5My4zIDEyNDUuNSBMOTAxLjEgMTI0OS43IEw5MDguNyAxMjU0LjMgTDkxNi4xIDEyNTkuMCBMOTIzLjIgMTI2NC4xIEw5MzAuMSAxMjY5LjUgTDkzNi44IDEyNzUuMiBMOTQzLjMgMTI4MS4xIEw5NDkuNSAxMjg3LjQgTDk1NS40IDEyOTQuMSBMOTYxLjAgMTMwMS4xIEw5NjYuMyAxMzA4LjUgTDk3MS4zIDEzMTYuMiBMOTcxLjggMTMxNS44IEw5NjYuOCAxMzA4LjEgTDk2MS41IDEzMDAuNyBMOTU1LjkgMTI5My43IEw5NTAuMiAxMjg2LjggTDk0NC4yIDEyODAuMiBMOTM4LjAgMTI3My45IEw5MzEuNSAxMjY3LjkgTDkyNC44IDEyNjIuMSBMOTE3LjggMTI1Ni42IEw5MTAuNiAxMjUxLjQgTDkwMy4yIDEyNDYuNCBMODk1LjUgMTI0MS42IEw4ODcuNiAxMjM3LjEgTDg3OS42IDEyMzIuNyBMODcxLjMgMTIyOC42IEw4NjIuOCAxMjI0LjggTDg1NC4xIDEyMjEuMSBMODQ1LjMgMTIxNy42IEw4MzYuMyAxMjE0LjMgTDgyNy4xIDEyMTEuMiBMODE3LjcgMTIwOC4yIEw4MDguMiAxMjA1LjQgTDc5OC42IDEyMDIuOCBMNzg4LjggMTIwMC40IEw3NzguOSAxMTk4LjAgTDc2OC44IDExOTUuOSBMNzU4LjcgMTE5My44IEw3NDguNCAxMTkxLjkgTDczOC4wIDExOTAuMCBMNzI3LjUgMTE4OC4zIEw3MTcuMCAxMTg2LjcgTDcwNi4zIDExODUuMiBMNjk1LjYgMTE4My43IEw2ODQuOCAxMTgyLjQgTDY3NC4wIDExODEuMSBMNjYzLjEgMTE3OS44IEw2NTIuMiAxMTc4LjYgTDY0MS4yIDExNzcuNSBMNjMwLjIgMTE3Ni40IEw2MTkuMiAxMTc1LjMgTDYwOC4xIDExNzQuNiBMNTk3LjAgMTE3NC4wIEw1ODUuOSAxMTczLjUgTDU3NC45IDExNzIuOSBMNTYzLjggMTE3Mi4zIEw1NTIuNyAxMTcxLjggTDU0MS43IDExNzEuMyBMNTMwLjcgMTE3MC43IEw1MTkuNyAxMTcwLjEgTDUwOC44IDExNjkuNSBMNDk3LjkgMTE2OC44IEw0ODcuMSAxMTY4LjEgTDQ3Ni40IDExNjcuNCBMNDY1LjcgMTE2Ni42IEw0NTUuMCAxMTY1LjcgTDQ0NC41IDExNjQuOCBMNDM0LjAgMTE2My43IEw0MjMuNiAxMTYyLjYgTDQxMy40IDExNjEuMyBMNDAzLjIgMTE2MC4wIEwzOTMuMSAxMTU4LjUgTDM4My4xIDExNTYuOSBMMzczLjMgMTE1NS4yIEwzNjMuNSAxMTUzLjMgTDM1My45IDExNTEuMyBMMzQ0LjQgMTE0OS4xIEwzMzUuMSAxMTQ2LjcgTDMyNS45IDExNDQuMiBMMzE2LjggMTE0MS40IEwzMDcuOSAxMTM4LjUgTDI5OS4xIDExMzUuNCBMMjkwLjUgMTEzMi4wIEwyODIuMCAxMTI4LjQgTDI3My44IDExMjQuNiBMMjY1LjYgMTEyMC41IEwyNTcuNyAxMTE2LjIgTDI1MC4wIDExMTEuNiBMMjQyLjQgMTEwNi43IEwyMzUuMCAxMTAxLjUgTDIyOC4xIDEwOTUuOCBaIi8+PC9jbGlwUGF0aD4NCjwvZGVmcz48ZyBmaWxsPSJ1cmwoI2cpIiBzdHJva2U9IiM2ZTUzMjAiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLW9wYWNpdHk9Ii41NSI+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOS4yNiAxMDQwLjAwKSBzY2FsZSgwLjgxOTIxIC0xLjQxMjQzKSIgZD0iTTMyMS4zMjA1NTY2NDA2MjUgNzA4VjY4OFEyODguNTgyMDM0Nzg4MjY5OTQgNjg3IDI3MS43MzEzMjUwMTEzMjI1IDY4MC41UTI1NC44ODA2MTUyMzQzNzUgNjc0IDI0OS4yMDA2MjI1NTg1OTM3NSA2NTYuNVEyNDMuNTIwNjI5ODgyODEyNSA2MzkgMjQzLjUyMDYyOTg4MjgxMjUgNjAyVjEwNlEyNDMuNTIwNjI5ODgyODEyNSA3MCAyNDkuMjgzNTg3NDIwNDI4MjMgNTIuMFEyNTUuMDQ2NTQ0OTU4MDQzOTcgMzQgMjcxLjg1NTE3MTEwOTQyMzIgMjguMFEyODguNjYzNzk3MjYwODAyNSAyMiAzMjEuMzIwNTU2NjQwNjI1IDIwVjBRMjk2LjQwMDUxMjY5NTMxMjUgMiAyNTguMzgwNDMyMTI4OTA2MjUgMi41UTIyMC4zNjAzNTE1NjI1IDMgMTgxLjUyMDI2MzY3MTg3NSAzUTEzNy42NDUxNTIwOTE5Nzk5OCAzIDk5LjM5NTA1NDgxNzE5OTcgMi41UTYxLjE0NDk1NzU0MjQxOTQzNCAyIDM3LjUxOTg5NzQ2MDkzNzUgMFYyMFE3MC41NTk4NzU0ODgyODEyNSAyMiA4Ny4yMjU4MTM4NDUzNzA2OCAyOC4wUTEwMy44OTE3NTIyMDI0NjAxMSAzNCAxMDkuNjA1Nzg4MjEwNjA1MDYgNTIuMFExMTUuMzE5ODI0MjE4NzUgNzAgMTE1LjMxOTgyNDIxODc1IDEwNlY2MDJRMTE1LjMxOTgyNDIxODc1IDYzOSAxMDkuNTY0OTM2MjExNzY4NjEgNjU2LjVRMTAzLjgxMDA0ODIwNDc4NzI0IDY3NCA4Ny4wMjQ5NTgxODQ0MjQ4NiA2ODAuNVE3MC4yMzk4NjgxNjQwNjI1IDY4NyAzNy41MTk4OTc0NjA5Mzc1IDY4OFY3MDhRNjEuMTQ0OTU3NTQyNDE5NDM0IDcwNyA5OS4zOTUwNTQ4MTcxOTk3IDcwNi4wUTEzNy42NDUxNTIwOTE5Nzk5OCA3MDUgMTgxLjUyMDI2MzY3MTg3NSA3MDVRMjIwLjM2MDM1MTU2MjUgNzA1IDI1OC4zODA0MzIxMjg5MDYyNSA3MDYuMFEyOTYuNDAwNTEyNjk1MzEyNSA3MDcgMzIxLjMyMDU1NjY0MDYyNSA3MDhaIi8+PHBhdGggdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjA5Ljk3IDQ5NS4wMCkgc2NhbGUoMC42NDI2NiAtMC42NDI2NikiIGQ9Ik04NjMuNTYwNzkxMDE1NjI1IDcwOFY2ODhRODMwLjg0MDgyMDMxMjUgNjg3IDgxMy45ODA4MzQ5NjA5Mzc1IDY4MC41UTc5Ny4xMjA4NDk2MDkzNzUgNjc0IDc5MS40NDA4NTY5MzM1OTM4IDY1Ni41UTc4NS43NjA4NjQyNTc4MTI1IDYzOSA3ODUuNzYwODY0MjU3ODEyNSA2MDJWMTA2UTc4NS43NjA4NjQyNTc4MTI1IDcwIDc5MS42MDA4NjA1OTU3MDMxIDUyLjBRNzk3LjQ0MDg1NjkzMzU5MzggMzQgODE0LjE0MDgzODYyMzA0NjkgMjguMFE4MzAuODQwODIwMzEyNSAyMiA4NjMuNTYwNzkxMDE1NjI1IDIwVjBRODM4LjAwMDczMjQyMTg3NSAyIDc5OS4xODA2MzM1NDQ5MjE5IDIuNVE3NjAuMzYwNTM0NjY3OTY4OCAzIDcyMC41NjA0MjQ4MDQ2ODc1IDNRNjc2Ljc2MDMxNDk0MTQwNjIgMyA2MzguNDQwMjE2MDY0NDUzMSAyLjVRNjAwLjEyMDExNzE4NzUgMiA1NzYuNTYwMDU4NTkzNzUgMFYyMFE2MTAuNTYwMDU4NTkzNzUgMjIgNjI4LjA2MDA1ODU5Mzc1IDI4LjBRNjQ1LjU2MDA1ODU5Mzc1IDM0IDY1MS41NjAwNTg1OTM3NSA1Mi4wUTY1Ny41NjAwNTg1OTM3NSA3MCA2NTcuNTYwMDU4NTkzNzUgMTA2VjY1MS4xOTk4OTAxMzY3MTg4TDY2My40ODAxMDI1MzkwNjI1IDY0OS43OTk5MjY3NTc4MTI1TDQxNi41NjAwNTg1OTM3NSAtMy4wNzk5NTYwNTQ2ODc1SDQwMC41NjAwNTg1OTM3NUwxMzguOTU5ODM4ODY3MTg3NSA2NDMuNjc5OTkyNjc1NzgxMlYxNDEuNjAwNTg1OTM3NVExMzguOTU5ODM4ODY3MTg3NSA5NS42ODAzNTg4ODY3MTg3NSAxNDUuMTM5ODMxNTQyOTY4NzUgNzAuMzgwMjQ5MDIzNDM3NVExNTEuMzE5ODI0MjE4NzUgNDUuMDgwMTM5MTYwMTU2MjUgMTcxLjQ1OTgzODg2NzE4NzUgMzQuMzQwMDg3ODkwNjI1UTE5MS41OTk4NTM1MTU2MjUgMjMuNjAwMDM2NjIxMDkzNzUgMjMzLjE1OTkxMjEwOTM3NSAyMFYwUTIxNC41MTk4OTc0NjA5Mzc1IDIgMTg0LjU1OTg3NTQ4ODI4MTI1IDIuNVExNTQuNTk5ODUzNTE1NjI1IDMgMTI3Ljk1OTgzODg2NzE4NzUgM1ExMDMuOTE5ODYwODM5ODQzNzUgMyA3OS4yMTk4NzkxNTAzOTA2MiAyLjVRNTQuNTE5ODk3NDYwOTM3NSAyIDM4LjE1OTkxMjEwOTM3NSAwVjIwUTcxLjE5OTg5MDEzNjcxODc1IDIzLjYwMDAzNjYyMTA5Mzc1IDg3Ljg5OTg3MTgyNjE3MTg4IDM0LjAyMDA4MDU2NjQwNjI1UTEwNC41OTk4NTM1MTU2MjUgNDQuNDQwMTI0NTExNzE4NzUgMTEwLjI3OTg0NjE5MTQwNjI1IDY4LjYyMDIwODc0MDIzNDM4UTExNS45NTk4Mzg4NjcxODc1IDkyLjgwMDI5Mjk2ODc1IDExNS45NTk4Mzg4NjcxODc1IDEzNS4yMDA0Mzk0NTMxMjVWNjAyUTExNS45NTk4Mzg4NjcxODc1IDYzOSAxMTAuMjc5ODQ2MTkxNDA2MjUgNjU2LjVRMTA0LjU5OTg1MzUxNTYyNSA2NzQgODcuNzM5ODY4MTY0MDYyNSA2ODAuNVE3MC44Nzk4ODI4MTI1IDY4NyAzOC4xNTk5MTIxMDkzNzUgNjg4VjcwOFE1NC41MTk4OTc0NjA5Mzc1IDcwNyA3OS4yMTk4NzkxNTAzOTA2MiA3MDYuMFExMDMuOTE5ODYwODM5ODQzNzUgNzA1IDEyNy45NTk4Mzg4NjcxODc1IDcwNVExNjEuNDgwMTAyNTM5MDYyNSA3MDUgMTk0LjQyMDMxODYwMzUxNTYyIDcwNi4wUTIyNy4zNjA1MzQ2Njc5Njg3NSA3MDcgMjUyLjAwMDczMjQyMTg3NSA3MDhMNDY5LjcyMDUyMDAxOTUzMTI1IDE1OC42NDExMTMyODEyNUw0NDguNTYwNDI0ODA0Njg3NSAxNDIuNjQwOTMwMTc1NzgxMjVMNjYwLjc2MDEzMTgzNTkzNzUgNzA1UTY3NS4zMjAxOTA0Mjk2ODc1IDcwNSA2OTAuNTAwMjc0NjU4MjAzMSA3MDUuMFE3MDUuNjgwMzU4ODg2NzE4OCA3MDUgNzIwLjU2MDQyNDgwNDY4NzUgNzA1UTc2MC4zNjA1MzQ2Njc5Njg4IDcwNSA3OTkuMTgwNjMzNTQ0OTIxOSA3MDYuMFE4MzguMDAwNzMyNDIxODc1IDcwNyA4NjMuNTYwNzkxMDE1NjI1IDcwOFoiLz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMjAuMzggMTA0MC4wMCkgc2NhbGUoMC42NDI2NiAtMC42NDI2NikiIGQ9Ik0zNy41MTk4OTc0NjA5Mzc1IDcwOFE2MS4wNzk5NTYwNTQ2ODc1IDcwNyA5OS40MDAwNTQ5MzE2NDA2MiA3MDYuMFExMzcuNzIwMTUzODA4NTkzNzUgNzA1IDE3NS41MjAyNjM2NzE4NzUgNzA1UTIyMy40ODAyODU2NDQ1MzEyNSA3MDUgMjY3LjQ0MDMwNzYxNzE4NzUgNzA2LjBRMzExLjQwMDMyOTU4OTg0Mzc1IDcwNyAzMjkuNzIwMzM2OTE0MDYyNSA3MDdRNDYwLjY0MDU2Mzk2NDg0Mzc1IDcwNyA1MjUuMjgwNjcwMTY2MDE1NiA2NTIuMFE1ODkuOTIwNzc2MzY3MTg3NSA1OTcgNTg5LjkyMDc3NjM2NzE4NzUgNTEwUTU4OS45MjA3NzYzNjcxODc1IDQ3NCA1NzYuOTYwNzU0Mzk0NTMxMiA0MzQuNVE1NjQuMDAwNzMyNDIxODc1IDM5NSA1MzIuNDIwNjg0ODE0NDUzMSAzNjEuNVE1MDAuODQwNjM3MjA3MDMxMjUgMzI4IDQ0Ni4xNjA1NTI5Nzg1MTU2IDMwNy4wUTM5MS40ODA0Njg3NSAyODYgMzA3LjcyMDMzNjkxNDA2MjUgMjg2SDIwOC41MjAyNjM2NzE4NzVWMzA2SDI5Ny43MjAzMzY5MTQwNjI1UTM2Mi4zMjAxOTA0Mjk2ODc1IDMwNiAzOTYuMzAwMTA5ODYzMjgxMjUgMzMzLjBRNDMwLjI4MDAyOTI5Njg3NSAzNjAgNDQyLjUgNDA0LjBRNDU0LjcxOTk3MDcwMzEyNSA0NDggNDU0LjcxOTk3MDcwMzEyNSA0OTlRNDU0LjcxOTk3MDcwMzEyNSA1OTQgNDIyLjM0MDA4Nzg5MDYyNSA2NDEuMFEzODkuOTYwMjA1MDc4MTI1IDY4OCAzMTEuMTIwNDgzMzk4NDM3NSA2ODhRMjY4Ljk2MDU3MTI4OTA2MjUgNjg4IDI1Ni4yNDA2MDA1ODU5Mzc1IDY3MS4wUTI0My41MjA2Mjk4ODI4MTI1IDY1NCAyNDMuNTIwNjI5ODgyODEyNSA2MDJWMTA5LjIwMDA3MzI0MjE4NzVRMjQzLjUyMDYyOTg4MjgxMjUgNzEuNjAwMDM2NjIxMDkzNzUgMjUxLjM0MDYzNzIwNzAzMTI1IDUyLjk2MDAyMTk3MjY1NjI1UTI1OS4xNjA2NDQ1MzEyNSAzNC4zMjAwMDczMjQyMTg3NSAyODEuODAwNjU5MTc5Njg3NSAyOC4zMjAwMDczMjQyMTg3NVEzMDQuNDQwNjczODI4MTI1IDIyLjMyMDAwNzMyNDIxODc1IDM0Ny43MjA3MDMxMjUgMjAuOTYwMDIxOTcyNjU2MjVWMFEzMTkuMTYwNjQ0NTMxMjUgMS42Nzk5OTI2NzU3ODEyNSAyNzQuMzYwNTM0NjY3OTY4NzUgMi4zMzk5OTYzMzc4OTA2MjVRMjI5LjU2MDQyNDgwNDY4NzUgMyAxODEuODQwMjcwOTk2MDkzNzUgM1ExNDAuNjAwMjE5NzI2NTYyNSAzIDEwMi43NjAxMzE4MzU5Mzc1IDIuMzM5OTk2MzM3ODkwNjI1UTY0LjkyMDA0Mzk0NTMxMjUgMS42Nzk5OTI2NzU3ODEyNSAzNy41MTk4OTc0NjA5Mzc1IDBWMjBRNzAuNTU5ODc1NDg4MjgxMjUgMjIgODcuMjU5ODU3MTc3NzM0MzggMjguMFExMDMuOTU5ODM4ODY3MTg3NSAzNCAxMDkuNjM5ODMxNTQyOTY4NzUgNTIuMFExMTUuMzE5ODI0MjE4NzUgNzAgMTE1LjMxOTgyNDIxODc1IDEwNlY2MDJRMTE1LjMxOTgyNDIxODc1IDYzOSAxMDkuNjM5ODMxNTQyOTY4NzUgNjU2LjVRMTAzLjk1OTgzODg2NzE4NzUgNjc0IDg3LjA5OTg1MzUxNTYyNSA2ODAuNVE3MC4yMzk4NjgxNjQwNjI1IDY4NyAzNy41MTk4OTc0NjA5Mzc1IDY4OFoiLz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1NTcuMzggMTA0MC4wMCkgc2NhbGUoMC42NDI2NiAtMC42NDI2NikiIGQ9Ik02NTQuNjgwOTA4MjAzMTI1IDcwOFY2ODguMzIwMDA3MzI0MjE4OFE2MjIuNzIwODg2MjMwNDY4OCA2ODIuNzE5OTcwNzAzMTI1IDU4OS43MjA3OTQ2Nzc3MzQ0IDY2NC4xNTk5MTIxMDkzNzVRNTU2LjcyMDcwMzEyNSA2NDUuNTk5ODUzNTE1NjI1IDUyMS45NjA1NzEyODkwNjI1IDYwMy40Nzk3MzYzMjgxMjVMMzMxLjg0MDYzNzIwNzAzMTI1IDM2OC42NDAwMTQ2NDg0Mzc1TDM3Mi43MjEwNjkzMzU5Mzc1IDQzNS44ODA0MzIxMjg5MDYyNUw2MTEuNzYxMDQ3MzYzMjgxMiA4MVE2MjcuNDgxMDE4MDY2NDA2MiA1Ny4yODAwMjkyOTY4NzUgNjQ1LjI0MDk2Njc5Njg3NSA0My4yODAwMjkyOTY4NzVRNjYzLjAwMDkxNTUyNzM0MzggMjkuMjgwMDI5Mjk2ODc1IDY5MS4xMjA4NDk2MDkzNzUgMjBWMFE2NjEuMzYwNzE3NzczNDM3NSAyIDYyMi4wMjA2Mjk4ODI4MTI1IDIuNVE1ODIuNjgwNTQxOTkyMTg3NSAzIDU1MS45MjA0MTAxNTYyNSAzUTUzMy4wMDAzNjYyMTA5Mzc1IDMgNTA1LjQ2MDI5NjYzMDg1OTQgMi41UTQ3Ny45MjAyMjcwNTA3ODEyNSAyIDQzNi4xMjAxMTcxODc1IDBWMjBRNDc0LjI4MDIxMjQwMjM0Mzc1IDIyIDQ4Mi44MDAyMDE0MTYwMTU2IDMxLjY3OTk5MjY3NTc4MTI1UTQ5MS4zMjAxOTA0Mjk2ODc1IDQxLjM1OTk4NTM1MTU2MjUgNDc1LjY0MDE5Nzc1MzkwNjI1IDY1TDMyOS45NjAyMDUwNzgxMjUgMjkzLjAwMDE4MzEwNTQ2ODc1UTMxMy4xNjAyNzgzMjAzMTI1IDMxOS44NDAwODc4OTA2MjUgMzAwLjA2MDMzMzI1MTk1MzEgMzMzLjI2MDA0MDI4MzIwMzFRMjg2Ljk2MDM4ODE4MzU5Mzc1IDM0Ni42Nzk5OTI2NzU3ODEyNSAyNzMuMzQwNDU0MTAxNTYyNSAzNTEuMzU5OTg1MzUxNTYyNVEyNTkuNzIwNTIwMDE5NTMxMjUgMzU2LjAzOTk3ODAyNzM0Mzc1IDIzOC44ODA2MTUyMzQzNzUgMzU3LjAzOTk3ODAyNzM0Mzc1VjM3Ny4zNTk5ODUzNTE1NjI1UTI4MS41MjA2Mjk4ODI4MTI1IDM3OC42Nzk5OTI2NzU3ODEyNSAzMTMuMzgwNzA2Nzg3MTA5NCAzOTguMDIwMDgwNTY2NDA2MjVRMzQ1LjI0MDc4MzY5MTQwNjI1IDQxNy4zNjAxNjg0NTcwMzEyNSAzNzUuNzYxMDQ3MzYzMjgxMjUgNDUzLjUyMDQ0Njc3NzM0Mzc1TDQ1MS45MjA1OTMyNjE3MTg3NSA1NDguNjM5ODMxNTQyOTY4OFE0ODcuODAwNjU5MTc5Njg3NSA1OTIuMjM5ODY4MTY0MDYyNSA0OTYuNzYwNTg5NTk5NjA5NCA2MjIuOTk5OTA4NDQ3MjY1NlE1MDUuNzIwNTIwMDE5NTMxMjUgNjUzLjc1OTk0ODczMDQ2ODggNDg5LjM2MDQ0MzExNTIzNDQgNjcwLjUzOTk3ODAyNzM0MzhRNDczLjAwMDM2NjIxMDkzNzUgNjg3LjMyMDAwNzMyNDIxODggNDMyLjI4MDM5NTUwNzgxMjUgNjg4LjMyMDAwNzMyNDIxODhWNzA4UTQ1NC4xNjA0NjE0MjU3ODEyNSA3MDcgNDc1LjYwMDQ5NDM4NDc2NTYgNzA2LjVRNDk3LjA0MDUyNzM0Mzc1IDcwNiA1MTkuMTAwNTg1OTM3NSA3MDUuNVE1NDEuMTYwNjQ0NTMxMjUgNzA1IDU2NC41NjA3OTEwMTU2MjUgNzA1UTU5Mi40ODA4MzQ5NjA5Mzc1IDcwNSA2MTUuMjgwODUzMjcxNDg0NCA3MDYuMFE2MzguMDgwODcxNTgyMDMxMiA3MDcgNjU0LjY4MDkwODIwMzEyNSA3MDhaTTMyMS4zMjA1NTY2NDA2MjUgNzA4VjY4OFEyODguNjAwNTg1OTM3NSA2ODcgMjcxLjc0MDYwMDU4NTkzNzUgNjgwLjVRMjU0Ljg4MDYxNTIzNDM3NSA2NzQgMjQ5LjIwMDYyMjU1ODU5Mzc1IDY1Ni41UTI0My41MjA2Mjk4ODI4MTI1IDYzOSAyNDMuNTIwNjI5ODgyODEyNSA2MDJWMTA2UTI0My41MjA2Mjk4ODI4MTI1IDcwIDI0OS4zNjA2MjYyMjA3MDMxMiA1Mi4wUTI1NS4yMDA2MjI1NTg1OTM3NSAzNCAyNzEuOTAwNjA0MjQ4MDQ2OSAyOC4wUTI4OC42MDA1ODU5Mzc1IDIyIDMyMS4zMjA1NTY2NDA2MjUgMjBWMFEyOTYuNDAwNTEyNjk1MzEyNSAyIDI1OC4zODA0MzIxMjg5MDYyNSAyLjVRMjIwLjM2MDM1MTU2MjUgMyAxODEuNTIwMjYzNjcxODc1IDNRMTM3LjcyMDE1MzgwODU5Mzc1IDMgOTkuNDAwMDU0OTMxNjQwNjIgMi41UTYxLjA3OTk1NjA1NDY4NzUgMiAzNy41MTk4OTc0NjA5Mzc1IDBWMjBRNzAuNTU5ODc1NDg4MjgxMjUgMjIgODcuMjU5ODU3MTc3NzM0MzggMjguMFExMDMuOTU5ODM4ODY3MTg3NSAzNCAxMDkuNjM5ODMxNTQyOTY4NzUgNTIuMFExMTUuMzE5ODI0MjE4NzUgNzAgMTE1LjMxOTgyNDIxODc1IDEwNlY2MDJRMTE1LjMxOTgyNDIxODc1IDYzOSAxMDkuNjM5ODMxNTQyOTY4NzUgNjU2LjVRMTAzLjk1OTgzODg2NzE4NzUgNjc0IDg3LjA5OTg1MzUxNTYyNSA2ODAuNVE3MC4yMzk4NjgxNjQwNjI1IDY4NyAzNy41MTk4OTc0NjA5Mzc1IDY4OFY3MDhRNjEuMDc5OTU2MDU0Njg3NSA3MDcgOTkuNDAwMDU0OTMxNjQwNjIgNzA2LjBRMTM3LjcyMDE1MzgwODU5Mzc1IDcwNSAxODEuNTIwMjYzNjcxODc1IDcwNVEyMjAuMzYwMzUxNTYyNSA3MDUgMjU4LjM4MDQzMjEyODkwNjI1IDcwNi4wUTI5Ni40MDA1MTI2OTUzMTI1IDcwNyAzMjEuMzIwNTU2NjQwNjI1IDcwOFoiLz48cmVjdCB4PSIyNjQuNSIgeT0iNTM1LjAiIHdpZHRoPSI3MzcuMCIgaGVpZ2h0PSIxMCIvPjxwYXRoIGQ9Ik0xNjcuNiAxMDM2LjIgTDE3MS42IDEwNDMuMyBMMTc1LjcgMTA1MC40IEwxODAuMyAxMDU3LjIgTDE4NS4zIDEwNjMuOCBMMTkwLjcgMTA3MC4yIEwxOTYuNiAxMDc2LjMgTDIwMi45IDEwODIuMSBMMjA5LjYgMTA4Ny43IEwyMTYuNiAxMDkzLjAgTDIyNC4wIDEwOTguMCBMMjMxLjggMTEwMi44IEwyMzkuOSAxMTA3LjMgTDI0OC40IDExMTEuNiBMMjU3LjEgMTExNS42IEwyNjYuMSAxMTE5LjQgTDI3NS40IDExMjIuOSBMMjg0LjkgMTEyNi4xIEwyOTQuNyAxMTI5LjIgTDMwNC43IDExMzIuMCBMMzE1LjAgMTEzNC43IEwzMjUuNCAxMTM3LjEgTDMzNi4xIDExMzkuNCBMMzQ2LjkgMTE0MS40IEwzNTcuOSAxMTQzLjMgTDM2OS4xIDExNDUuMCBMMzgwLjQgMTE0Ni42IEwzOTEuOSAxMTQ4LjEgTDQwMy41IDExNDkuNCBMNDE1LjMgMTE1MC42IEw0MjcuMiAxMTUxLjYgTDQzOS4yIDExNTIuNiBMNDUxLjMgMTE1My41IEw0NjMuNSAxMTU0LjMgTDQ3NS44IDExNTUuMCBMNDg4LjEgMTE1NS42IEw1MDAuNiAxMTU2LjIgTDUxMy4xIDExNTYuOCBMNTI1LjcgMTE1Ny4zIEw1MzguNCAxMTU3LjggTDU1MS4xIDExNTguMiBMNTYzLjkgMTE1Ny42IEw1NzYuNyAxMTU3LjEgTDU4OS42IDExNTYuNyBMNjAyLjUgMTE1Ni4zIEw2MTUuNCAxMTU2LjAgTDYyOC4zIDExNTUuOCBMNjQxLjMgMTE1NS43IEw2NTQuMyAxMTU1LjggTDY2Ny4zIDExNTYuMCBMNjgwLjMgMTE1Ni4zIEw2OTMuMyAxMTU2LjggTDcwNi4zIDExNTcuNCBMNzE5LjMgMTE1OC4zIEw3MzIuMiAxMTU5LjMgTDc0NS4yIDExNjAuNSBMNzU4LjEgMTE2MS45IEw3NzAuOSAxMTYzLjUgTDc4My44IDExNjUuMyBMNzk2LjUgMTE2Ny40IEw4MDkuMyAxMTY5LjcgTDgyMS45IDExNzIuMyBMODM0LjUgMTE3NS4xIEw4NDcuMCAxMTc4LjMgTDg1OS41IDExODEuNyBMODcxLjkgMTE4NS40IEw4ODQuMSAxMTg5LjUgTDg5Ni4zIDExOTMuOSBMOTA4LjQgMTE5OC42IEw5MjAuMyAxMjAzLjYgTDkzMi4yIDEyMDkuMCBMOTQzLjkgMTIxNC44IEw5NTUuNCAxMjIxLjAgTDk2Ni44IDEyMjcuNiBMOTc4LjEgMTIzNC42IEw5ODkuMiAxMjQyLjAgTDEwMDAuMSAxMjQ5LjkgTDEwMTAuOCAxMjU4LjIgTDEwMjEuMyAxMjY3LjAgTDEwMzEuNSAxMjc2LjMgTDEwNDEuMyAxMjg2LjIgTDEwNDEuOCAxMjg1LjggTDEwMzEuOSAxMjc1LjkgTDEwMjEuOSAxMjY2LjMgTDEwMTEuOSAxMjU2LjkgTDEwMDEuNiAxMjQ4LjAgTDk5MS4yIDEyMzkuMyBMOTgwLjYgMTIzMS4wIEw5NjkuOCAxMjIzLjEgTDk1OC44IDEyMTUuNSBMOTQ3LjcgMTIwOC4yIEw5MzYuNCAxMjAxLjIgTDkyNC45IDExOTQuNSBMOTEzLjIgMTE4OC4yIEw5MDEuNSAxMTgyLjEgTDg4OS41IDExNzYuMyBMODc3LjQgMTE3MC43IEw4NjUuMiAxMTY1LjUgTDg1Mi45IDExNjAuNSBMODQwLjQgMTE1NS44IEw4MjcuOCAxMTUxLjIgTDgxNS4yIDExNDcuMCBMODAyLjQgMTE0Mi45IEw3ODkuNiAxMTM5LjEgTDc3Ni42IDExMzUuNSBMNzYzLjYgMTEzMi4wIEw3NTAuNiAxMTI4LjggTDczNy41IDExMjUuNyBMNzI0LjMgMTEyMi45IEw3MTEuMSAxMTIwLjEgTDY5Ny45IDExMTcuNSBMNjg0LjcgMTExNS4xIEw2NzEuNCAxMTEyLjggTDY1OC4yIDExMTAuNiBMNjQ1LjAgMTEwOC41IEw2MzEuNyAxMTA2LjUgTDYxOC41IDExMDQuNyBMNjA1LjQgMTEwMi45IEw1OTIuMyAxMTAxLjEgTDU3OS4yIDEwOTkuNSBMNTY2LjMgMTA5Ny44IEw1NTMuMyAxMDk2LjMgTDU0MC41IDEwOTUuOCBMNTI3LjcgMTA5NS41IEw1MTUuMCAxMDk1LjIgTDUwMi41IDEwOTUuMCBMNDkwLjAgMTA5NC44IEw0NzcuNyAxMDk0LjcgTDQ2NS41IDEwOTQuNiBMNDUzLjUgMTA5NC41IEw0NDEuNiAxMDk0LjUgTDQyOS44IDEwOTQuNCBMNDE4LjIgMTA5NC4zIEw0MDYuOCAxMDk0LjIgTDM5NS41IDEwOTQuMSBMMzg0LjQgMTA5My45IEwzNzMuNSAxMDkzLjcgTDM2Mi44IDEwOTMuNCBMMzUyLjMgMTA5My4wIEwzNDIuMCAxMDkyLjYgTDMzMS44IDEwOTIuMCBMMzIxLjkgMTA5MS40IEwzMTIuMiAxMDkwLjYgTDMwMi43IDEwODkuNyBMMjkzLjQgMTA4OC43IEwyODQuMyAxMDg3LjUgTDI3NS41IDEwODYuMiBMMjY2LjggMTA4NC43IEwyNTguNCAxMDgzLjAgTDI1MC4yIDEwODEuMSBMMjQyLjEgMTA3OS4wIEwyMzQuNCAxMDc2LjcgTDIyNi44IDEwNzQuMSBMMjE5LjQgMTA3MS4yIEwyMTIuMiAxMDY4LjEgTDIwNS4yIDEwNjQuNiBMMTk4LjUgMTA2MC44IEwxOTEuOSAxMDU2LjcgTDE4NS41IDEwNTIuMiBMMTc5LjQgMTA0Ny4yIEwxNzMuNSAxMDQxLjggTDE2OC4xIDEwMzUuOCBaIi8+PHBhdGggZD0iTTIyNy43IDEwOTYuMiBMMjM0LjQgMTEwMi4yIEwyNDEuMyAxMTA4LjIgTDI0OC40IDExMTMuOSBMMjU1LjcgMTExOS4zIEwyNjMuMyAxMTI0LjUgTDI3MS4xIDExMjkuNSBMMjc5LjEgMTEzNC4yIEwyODcuNCAxMTM4LjcgTDI5NS44IDExNDMuMCBMMzA0LjUgMTE0Ny4wIEwzMTMuMyAxMTUwLjkgTDMyMi40IDExNTQuNSBMMzMxLjYgMTE1Ny45IEwzNDEuMCAxMTYxLjEgTDM1MC41IDExNjQuMiBMMzYwLjIgMTE2Ny4wIEwzNzAuMCAxMTY5LjcgTDM4MC4wIDExNzIuMiBMMzkwLjEgMTE3NC41IEw0MDAuMyAxMTc2LjcgTDQxMC42IDExNzguNyBMNDIxLjAgMTE4MC42IEw0MzEuNSAxMTgyLjQgTDQ0Mi4xIDExODQuMCBMNDUyLjggMTE4NS41IEw0NjMuNiAxMTg2LjkgTDQ3NC40IDExODguMiBMNDg1LjMgMTE4OS41IEw0OTYuMiAxMTkwLjYgTDUwNy4yIDExOTEuNiBMNTE4LjIgMTE5Mi42IEw1MjkuMiAxMTkzLjUgTDU0MC4zIDExOTQuMyBMNTUxLjMgMTE5NS4xIEw1NjIuNCAxMTk1LjggTDU3My41IDExOTYuNiBMNTg0LjYgMTE5Ny4yIEw1OTUuNyAxMTk3LjkgTDYwNi43IDExOTguNiBMNjE3LjcgMTE5OS4yIEw2MjguOCAxMTk5LjUgTDYzOS43IDExOTkuOCBMNjUwLjcgMTIwMC4xIEw2NjEuNiAxMjAwLjUgTDY3Mi40IDEyMDAuOSBMNjgzLjIgMTIwMS40IEw2OTMuOSAxMjAyLjAgTDcwNC41IDEyMDIuNyBMNzE1LjEgMTIwMy40IEw3MjUuNiAxMjA0LjMgTDczNi4wIDEyMDUuMiBMNzQ2LjMgMTIwNi4zIEw3NTYuNSAxMjA3LjUgTDc2Ni42IDEyMDguOCBMNzc2LjUgMTIxMC4zIEw3ODYuNCAxMjExLjkgTDc5Ni4xIDEyMTMuNiBMODA1LjcgMTIxNS41IEw4MTUuMiAxMjE3LjYgTDgyNC41IDEyMTkuOSBMODMzLjcgMTIyMi40IEw4NDIuNyAxMjI1LjAgTDg1MS42IDEyMjcuOSBMODYwLjMgMTIzMC45IEw4NjguOCAxMjM0LjIgTDg3Ny4yIDEyMzcuNyBMODg1LjQgMTI0MS41IEw4OTMuMyAxMjQ1LjUgTDkwMS4xIDEyNDkuNyBMOTA4LjcgMTI1NC4zIEw5MTYuMSAxMjU5LjAgTDkyMy4yIDEyNjQuMSBMOTMwLjEgMTI2OS41IEw5MzYuOCAxMjc1LjIgTDk0My4zIDEyODEuMSBMOTQ5LjUgMTI4Ny40IEw5NTUuNCAxMjk0LjEgTDk2MS4wIDEzMDEuMSBMOTY2LjMgMTMwOC41IEw5NzEuMyAxMzE2LjIgTDk3MS44IDEzMTUuOCBMOTY2LjggMTMwOC4xIEw5NjEuNSAxMzAwLjcgTDk1NS45IDEyOTMuNyBMOTUwLjIgMTI4Ni44IEw5NDQuMiAxMjgwLjIgTDkzOC4wIDEyNzMuOSBMOTMxLjUgMTI2Ny45IEw5MjQuOCAxMjYyLjEgTDkxNy44IDEyNTYuNiBMOTEwLjYgMTI1MS40IEw5MDMuMiAxMjQ2LjQgTDg5NS41IDEyNDEuNiBMODg3LjYgMTIzNy4xIEw4NzkuNiAxMjMyLjcgTDg3MS4zIDEyMjguNiBMODYyLjggMTIyNC44IEw4NTQuMSAxMjIxLjEgTDg0NS4zIDEyMTcuNiBMODM2LjMgMTIxNC4zIEw4MjcuMSAxMjExLjIgTDgxNy43IDEyMDguMiBMODA4LjIgMTIwNS40IEw3OTguNiAxMjAyLjggTDc4OC44IDEyMDAuNCBMNzc4LjkgMTE5OC4wIEw3NjguOCAxMTk1LjkgTDc1OC43IDExOTMuOCBMNzQ4LjQgMTE5MS45IEw3MzguMCAxMTkwLjAgTDcyNy41IDExODguMyBMNzE3LjAgMTE4Ni43IEw3MDYuMyAxMTg1LjIgTDY5NS42IDExODMuNyBMNjg0LjggMTE4Mi40IEw2NzQuMCAxMTgxLjEgTDY2My4xIDExNzkuOCBMNjUyLjIgMTE3OC42IEw2NDEuMiAxMTc3LjUgTDYzMC4yIDExNzYuNCBMNjE5LjIgMTE3NS4zIEw2MDguMSAxMTc0LjYgTDU5Ny4wIDExNzQuMCBMNTg1LjkgMTE3My41IEw1NzQuOSAxMTcyLjkgTDU2My44IDExNzIuMyBMNTUyLjcgMTE3MS44IEw1NDEuNyAxMTcxLjMgTDUzMC43IDExNzAuNyBMNTE5LjcgMTE3MC4xIEw1MDguOCAxMTY5LjUgTDQ5Ny45IDExNjguOCBMNDg3LjEgMTE2OC4xIEw0NzYuNCAxMTY3LjQgTDQ2NS43IDExNjYuNiBMNDU1LjAgMTE2NS43IEw0NDQuNSAxMTY0LjggTDQzNC4wIDExNjMuNyBMNDIzLjYgMTE2Mi42IEw0MTMuNCAxMTYxLjMgTDQwMy4yIDExNjAuMCBMMzkzLjEgMTE1OC41IEwzODMuMSAxMTU2LjkgTDM3My4zIDExNTUuMiBMMzYzLjUgMTE1My4zIEwzNTMuOSAxMTUxLjMgTDM0NC40IDExNDkuMSBMMzM1LjEgMTE0Ni43IEwzMjUuOSAxMTQ0LjIgTDMxNi44IDExNDEuNCBMMzA3LjkgMTEzOC41IEwyOTkuMSAxMTM1LjQgTDI5MC41IDExMzIuMCBMMjgyLjAgMTEyOC40IEwyNzMuOCAxMTI0LjYgTDI2NS42IDExMjAuNSBMMjU3LjcgMTExNi4yIEwyNTAuMCAxMTExLjYgTDI0Mi40IDExMDYuNyBMMjM1LjAgMTEwMS41IEwyMjguMSAxMDk1LjggWiIvPjwvZz4NCjxnIGNsaXAtcGF0aD0idXJsKCNjKSI+PHJlY3Qgd2lkdGg9IjExMDEiIGhlaWdodD0iMTMzNiIgZmlsbD0idXJsKCNoKSIvPjxyZWN0IHdpZHRoPSIxMTAxIiBoZWlnaHQ9IjEzMzYiIGZpbGw9InVybCgjaDIpIi8+PC9nPjwvc3ZnPg==" alt="Logo IMPK" width="34" height="41"><span>Interlude Media<small>Partner Kreatif</small></span></a>
+    <div class="nav-links">
+      <a href="#web" data-nav="web" aria-current="page">Website &amp; Sistem</a>
+      <a href="#aplikasi" data-nav="aplikasi">Aplikasi Android</a>
+      <a href="#iot" data-nav="iot">IoT</a>
+      <a href="#tentang" data-nav="tentang">Tentang Kami</a>
+    </div>
+    <a class="btn btn-primary" href="#kontak">Konsultasi</a>
+  </div>
+</nav>
+
+<div class="view" data-view="web">
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="pill"><span class="dot"></span>Menerima proyek baru</span>
+      <h1>Bisnis Anda layak punya <span class="hl">sistem sendiri.</span></h1>
+      <p class="lead">Kami membangun company profile, sistem kasir dan gudang, sampai otomasi IoT yang bisa Anda kendalikan dari ponsel. Bayar sekali dan jadi milik Anda, atau berlangganan dan biar kami yang merawat.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#paket">Lihat paket &amp; harga →</a>
+        <a class="btn btn-ghost" href="#kontak">Konsultasi gratis</a>
+      </div>
+      <div class="stats">
+        <div><strong>Rp1,5 jt</strong><span>harga mulai dari</span></div>
+        <div><strong>4 layanan</strong><span>web, aplikasi, sistem, IoT</span></div>
+        <div><strong>100%</strong><span>akses penuh untuk pemilik</span></div>
+      </div>
+    </div>
+
+    <div class="mock" aria-hidden="true">
+      <div class="browser">
+        <div class="chrome"><i></i><i></i><i></i><span class="url">admin.usahaanda.co.id/dashboard</span></div>
+        <div class="app">
+          <div class="side"><b></b><b></b><b></b><b style="width:60%"></b><b></b><b style="width:75%"></b></div>
+          <div class="main">
+            <div class="kpis">
+              <div class="kpi"><small>Penjualan</small><strong>Rp48,2 jt</strong> <em>▲ 12%</em></div>
+              <div class="kpi"><small>Stok</small><strong>1.284</strong> <em>aman</em></div>
+              <div class="kpi"><small>Pajak</small><strong>Otomatis</strong></div>
+            </div>
+            <div class="chart">
+              <span style="height:38%;animation-delay:.05s"></span><span style="height:52%;animation-delay:.1s"></span><span style="height:45%;animation-delay:.15s"></span><span style="height:66%;animation-delay:.2s"></span><span style="height:58%;animation-delay:.25s"></span><span style="height:74%;animation-delay:.3s"></span><span style="height:70%;animation-delay:.35s"></span><span style="height:88%;animation-delay:.4s"></span><span style="height:95%;animation-delay:.45s"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="float"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span><b>Pembayaran supplier</b>terkirim otomatis</span></div>
+      <div class="phone">
+        <div class="scr">
+          <span class="tt">Gudang A</span>
+          <span class="temp" id="temp">24,6°C</span>
+          <div class="sw">Lampu <span class="tg"></span></div>
+          <div class="sw">Pompa <span class="tg off"></span></div>
+          <div class="sw">Kipas <span class="tg"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true"><div class="track">
+  <span>Company Profile</span><span>Sistem Kasir</span><span>Manajemen Keuangan</span><span>Perpajakan Otomatis</span><span>Stok Gudang</span><span>Pemetaan Lokasi</span><span>Otomasi IoT</span><span>Aplikasi Custom</span>
+  <span>Company Profile</span><span>Sistem Kasir</span><span>Manajemen Keuangan</span><span>Perpajakan Otomatis</span><span>Stok Gudang</span><span>Pemetaan Lokasi</span><span>Otomasi IoT</span><span>Aplikasi Custom</span>
+</div></div>
+
+<main>
+<!-- PAKET -->
+<section class="sec" id="paket">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="label">Company Profile</span><h2>Pilih paket, tampil profesional.</h2></div>
+      <div class="toggle" role="group" aria-label="Pilih skema pembayaran">
+        <button type="button" id="btn-permanen" aria-pressed="true" data-mode="permanen">Permanent</button>
+        <button type="button" id="btn-langganan" aria-pressed="false" data-mode="langganan">Langganan</button>
+      </div>
+    </div>
+
+    <div class="plans">
+      <article class="plan">
+        <div class="head">
+          <span class="medal"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14" r="6"/><path d="M8.5 9.2 6 2h4l2 5 2-5h4l-2.5 7.2"/></svg></span>
+          <div><h3>Silver</h3><p>Website profil usaha yang rapi dan cepat.</p></div>
+        </div>
+        <div class="price" data-mode-show="permanen">
+          <span class="big">Rp5–20 jt <small>sekali bayar</small></span>
+          <span class="sub">Harga menyesuaikan kebutuhan fitur. Website jadi milik Anda sepenuhnya.</span>
+        </div>
+        <div class="price" data-mode-show="langganan" hidden>
+          <span class="big">Rp150 rb <small>/ bulan</small></span>
+          <span class="sub">+ biaya pembuatan Rp2.500.000 di awal</span>
+        </div>
+        <ul class="spec" data-mode-show="permanen">
+          <li>Website company profile siap tayang</li>
+          <li>Domain 1 tahun (perpanjangan berikutnya oleh Anda)</li>
+          <li>1 akun email bisnis</li>
+          <li>Akses penuh diserahkan ke pemilik</li>
+          <li>Maintenance dikelola sendiri oleh pemilik</li>
+        </ul>
+        <ul class="spec" data-mode-show="langganan" hidden>
+          <li>Website company profile siap tayang</li>
+          <li>Domain dan email bisnis sudah termasuk</li>
+          <li>Maintenance kami tangani setiap bulan</li>
+          <li>Tidak perlu urus server atau perpanjangan</li>
+        </ul>
+        <p class="fit"><b>Cocok untuk:</b> UMKM, toko, jasa, dan usaha yang baru mulai tampil online.</p>
+        <a class="btn" href="#kontak">Pesan Silver</a>
+      </article>
+
+      <article class="plan gold">
+        <span class="ribbon">Paling lengkap</span>
+        <div class="head">
+          <span class="medal"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5z"/></svg></span>
+          <div><h3>Gold</h3><p>Website lengkap dengan panel admin dan dukungan penuh.</p></div>
+        </div>
+        <div class="price" data-mode-show="permanen">
+          <span class="big">Rp20–35 jt <small>sekali bayar</small></span>
+          <span class="sub">Harga menyesuaikan kebutuhan fitur.</span>
+        </div>
+        <div class="price" data-mode-show="langganan" hidden>
+          <span class="big">Rp1 jt <small>/ bulan</small></span>
+          <span class="sub">+ biaya pembuatan Rp10.000.000 di awal</span>
+        </div>
+        <ul class="spec" data-mode-show="permanen">
+          <li>Fitur lengkap dengan panel administrasi</li>
+          <li>Domain disesuaikan dengan kebutuhan Anda</li>
+          <li>Analisis web gratis agar mudah dipakai tim Anda</li>
+          <li>6× troubleshooting dan upgrade fitur</li>
+          <li>Akses penuh diserahkan ke pemilik</li>
+        </ul>
+        <ul class="spec" data-mode-show="langganan" hidden>
+          <li>Fitur lengkap dengan panel administrasi</li>
+          <li>Maintenance penuh oleh tim kami</li>
+          <li>3× analisis dan penambahan fitur gratis</li>
+          <li>Domain dan email bisnis sudah termasuk</li>
+        </ul>
+        <p class="fit"><b>Cocok untuk:</b> perusahaan, instansi, dan lembaga yang butuh website dengan pengelolaan konten dan data.</p>
+        <a class="btn" href="#kontak">Pesan Gold</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SISTEM -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="label">Dibuat khusus</span><h2>Sistem yang mengikuti cara kerja Anda.</h2></div>
+      <p>Kami pelajari alur kerja Anda dulu, baru merancang sistemnya. Harga mengikuti jumlah modul dan tingkat kerumitan.</p>
+    </div>
+    <div class="systems">
+      <article class="sys custom">
+        <span class="label">Custom Sistem</span>
+        <h3>Apa pun yang bisnis Anda butuhkan, kami bangun.</h3>
+        <span class="range">Rp4,5 jt – Rp200 jt</span>
+        <div class="mods">
+          <div class="mod"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M7 20h10M12 16v4"/></svg>Kasir / POS</div>
+          <div class="mod"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>Keuangan</div>
+          <div class="mod"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M9 13h6M9 17h6M14 2v6h6"/></svg>Pajak otomatis</div>
+          <div class="mod"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4"/></svg>Bayar supplier</div>
+          <div class="mod"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>Stok gudang</div>
+          <div class="mod"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Pemetaan</div>
+        </div>
+      </article>
+      <article class="sys iot">
+        <span class="label">Sistem IoT</span>
+        <h3>Kendalikan perangkat secara real-time.</h3>
+        <span class="range">Mulai Rp1,5 jt</span>
+        <p>Pantau sensor dan nyalakan alat dari ponsel atau dashboard. Bisa untuk satu ruangan sampai satu pabrik.</p>
+        <a class="btn btn-ghost" href="#iot">Lihat halaman IoT →</a>
+        <div class="iot-live" aria-label="Contoh tampilan pemantauan">
+          <div class="iot-row"><span>Suhu ruang server</span><span class="v" id="t2">24,6 °C</span></div>
+          <div class="iot-row"><span>Kelembapan</span><span class="v" id="h2">61 %</span></div>
+          <canvas id="pulse" width="600" height="160" aria-hidden="true"></canvas>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROSES -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="label">Cara kerja</span><h2>Dari ide sampai online.</h2></div></div>
+    <div class="steps">
+      <div class="step"><h3>Konsultasi</h3><p>Ceritakan usaha dan kebutuhan Anda. Gratis, tanpa komitmen.</p></div>
+      <div class="step"><h3>Rancangan &amp; harga</h3><p>Kami kirim rancangan fitur dan harga pasti sebelum mulai.</p></div>
+      <div class="step"><h3>Pembuatan</h3><p>Anda bisa memantau progres dan memberi masukan di setiap tahap.</p></div>
+      <div class="step"><h3>Serah terima</h3><p>Sistem tayang, tim Anda kami ajari cara memakainya.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- KALKULATOR -->
+<section class="sec">
+  <div class="wrap">
+    <div class="calc" aria-labelledby="calc-h">
+      <span class="label">Hitung sendiri</span>
+      <h2 id="calc-h" style="font-size:clamp(26px,3.4vw,38px);margin-top:6px">Permanent atau langganan?</h2>
+      <p style="color:var(--ink-soft);margin-top:8px;max-width:60ch">Geser untuk melihat total biaya dalam beberapa bulan. Harga permanent dihitung dari harga terendah (Silver Rp5 jt, Gold Rp20 jt).</p>
+      <div class="months" style="margin-top:20px">
+        <label for="m" class="label">Lama pemakaian</label>
+        <input type="range" id="m" min="1" max="48" value="12">
+        <output id="m-out" for="m">12 bulan</output>
+      </div>
+      <div class="calc-grid">
+        <div class="cmp" id="cmp-silver"></div>
+        <div class="cmp" id="cmp-gold"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="label">Pertanyaan umum</span><h2>Yang sering ditanyakan.</h2></div></div>
+    <div class="faq">
+      <details open><summary>Apa bedanya permanent dan langganan?</summary><p>Permanent: bayar sekali, seluruh akses diserahkan ke Anda, dan perawatan Anda kelola sendiri. Langganan: biaya awal lebih ringan, lalu bayar bulanan dan kami yang merawat domain, email, dan sistemnya.</p></details>
+      <details><summary>Kalau nanti butuh fitur tambahan?</summary><p>Bisa kapan saja. Penambahan fitur di luar paket dikenakan biaya sesuai tingkat kerumitannya, dan kami beri estimasi dulu sebelum mulai. Paket Gold langganan sudah termasuk 3× penambahan fitur gratis.</p></details>
+      <details><summary>Apakah website benar-benar jadi milik saya?</summary><p>Ya. Pada skema permanent, akses hosting, domain, dan panel admin diserahkan penuh ke pemilik usaha.</p></details>
+      <details><summary>Kenapa harga Custom Sistem rentangnya lebar?</summary><p>Karena setiap usaha berbeda. Sistem kasir sederhana jauh lebih ringan daripada sistem gudang multi-cabang dengan pajak otomatis dan pemetaan. Setelah konsultasi, Anda menerima harga pasti.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+</div>
+
+<!-- ================= APLIKASI ANDROID ================= -->
+<div class="view" data-view="aplikasi" hidden>
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="pill"><span class="dot"></span>Aplikasi Android</span>
+      <h1>Usaha Anda, <span class="hl">di genggaman</span> pelanggan.</h1>
+      <p class="lead">Kami membuat aplikasi Android untuk pelanggan maupun tim Anda: pemesanan, kasir, absensi, sampai kendali perangkat IoT. Terhubung langsung dengan website dan sistem Anda.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#kontak">Konsultasikan ide aplikasi →</a>
+        <a class="btn btn-ghost" href="#app-jenis">Lihat contoh aplikasi</a>
+      </div>
+      <div class="stats">
+        <div><strong>Android</strong><span>siap pasang di HP</span></div>
+        <div><strong>+ Panel admin</strong><span>kelola data dari web</span></div>
+        <div><strong>Play Store</strong><span>dibantu sampai terbit</span></div>
+      </div>
+    </div>
+    <div class="mock" aria-hidden="true">
+      <div class="phones">
+        <div class="ph"><div class="scr">
+          <div class="top"><small>Selamat datang</small>Toko Anda</div>
+          <div class="body">
+            <div class="prod"><i></i><span>Kopi Susu Gula Aren</span><b>18rb</b></div>
+            <div class="prod"><i></i><span>Roti Bakar Coklat</span><b>15rb</b></div>
+            <div class="prod"><i></i><span>Es Teh Leci</span><b>12rb</b></div>
+            <div class="cart">Keranjang · 3 item · Rp45.000</div>
+          </div>
+          <div class="tabbar"><span></span><span></span><span></span><span></span></div>
+        </div></div>
+        <div class="ph"><div class="scr">
+          <div class="top dark"><small>Absensi karyawan</small>Senin, 07:58</div>
+          <div class="body">
+            <div class="map"></div>
+            <div class="info"><span>Lokasi</span><b>Kantor Pusat</b></div>
+            <div class="info"><span>Jarak</span><b>12 m</b></div>
+            <div class="absen">Absen Masuk</div>
+          </div>
+          <div class="tabbar"><span></span><span></span><span></span></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="sec" id="app-jenis">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="label">Contoh aplikasi</span><h2>Aplikasi yang bisa kami buat untuk Anda.</h2></div>
+      <p>Belum menemukan yang cocok? Ceritakan alur kerja Anda, kami rancang aplikasinya dari nol.</p>
+    </div>
+    <div class="types">
+      <article class="type"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg></span><h3>Toko &amp; pemesanan</h3><p>Pelanggan pesan dan bayar dari HP. Pesanan langsung masuk ke kasir atau dapur.</p></article>
+      <article class="type"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M7 20h10M12 16v4"/></svg></span><h3>Kasir mobile</h3><p>Transaksi, struk, dan laporan harian cukup dari tablet atau HP Android.</p></article>
+      <article class="type"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><h3>Absensi &amp; tim lapangan</h3><p>Absen dengan lokasi GPS dan foto, laporan kunjungan sales, dan rekap otomatis.</p></article>
+      <article class="type"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></span><h3>Stok &amp; gudang</h3><p>Scan barcode untuk barang masuk dan keluar. Stok di semua cabang selalu terbarui.</p></article>
+      <article class="type"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4"/><circle cx="12" cy="12" r="4"/></svg></span><h3>Kendali IoT</h3><p>Nyalakan alat dan pantau sensor dari mana saja. Lihat <a href="#iot">halaman IoT</a>.</p></article>
+      <article class="type"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><h3>Pendamping website</h3><p>Versi aplikasi dari website atau sistem Anda, dengan data yang sama.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="label">Fitur</span><h2>Pilih fitur sesuai kebutuhan.</h2></div></div>
+    <div class="feats">
+      <span>Login &amp; akun pengguna</span><span>Notifikasi</span><span>Pembayaran online</span><span>Peta &amp; GPS</span><span>Scan barcode / QR</span><span>Kamera &amp; unggah foto</span><span>Bisa dipakai offline</span><span>Laporan &amp; grafik</span><span>Panel admin web</span><span>Chat pelanggan</span><span>Cetak struk Bluetooth</span><span>Terhubung ke sistem yang sudah ada</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="label">Skema pembayaran</span><h2>Permanent atau langganan.</h2></div>
+      <p>Harga aplikasi mengikuti jumlah fitur dan halaman. Setelah konsultasi, Anda menerima rincian harga pasti.</p>
+    </div>
+    <div class="deal">
+      <article class="plan">
+        <div class="head"><div><h3>Permanent</h3><p>Bayar sekali, aplikasi milik Anda.</p></div></div>
+        <ul class="spec">
+          <li>Aplikasi Android siap pakai</li>
+          <li>Panel admin untuk mengelola data</li>
+          <li>Akses penuh diserahkan ke pemilik</li>
+          <li>Dibantu terbit di Google Play Store</li>
+        </ul>
+        <a class="btn" href="#kontak">Minta penawaran</a>
+      </article>
+      <article class="plan gold">
+        <span class="ribbon">Lebih ringan di awal</span>
+        <div class="head"><div><h3>Langganan</h3><p>Biaya awal lebih kecil, bayar bulanan.</p></div></div>
+        <ul class="spec">
+          <li>Aplikasi Android siap pakai</li>
+          <li>Server dan database kami kelola</li>
+          <li>Update dan perbaikan rutin oleh tim kami</li>
+          <li>Penyesuaian untuk versi Android terbaru</li>
+        </ul>
+        <a class="btn" href="#kontak">Minta penawaran</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="label">Cara kerja</span><h2>Dari ide sampai ada di Play Store.</h2></div></div>
+    <div class="steps">
+      <div class="step"><h3>Konsultasi</h3><p>Ceritakan siapa penggunanya dan masalah apa yang ingin diselesaikan.</p></div>
+      <div class="step"><h3>Desain tampilan</h3><p>Anda melihat dan mencoba rancangan layar sebelum aplikasi dibuat.</p></div>
+      <div class="step"><h3>Pembuatan &amp; uji coba</h3><p>Aplikasi dipasang di HP Anda untuk dicoba langsung bersama tim.</p></div>
+      <div class="step"><h3>Terbit</h3><p>Aplikasi diunggah ke Play Store dan tim Anda kami ajari cara memakainya.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+</div>
+
+<!-- ================= IOT ================= -->
+<div class="view" data-view="iot" hidden>
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="pill"><span class="dot"></span>Internet of Things</span>
+      <h1>Alat Anda bekerja <span class="hl">sendiri.</span> Anda tinggal memantau.</h1>
+      <p class="lead">Sensor membaca kondisi, sistem mengambil keputusan, dan alat menyala atau mati otomatis. Semua bisa Anda pantau dan kendalikan dari HP, kapan saja dan di mana saja.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#iot-demo">Coba simulasinya →</a>
+        <a class="btn btn-ghost" href="#kontak">Konsultasi gratis</a>
+      </div>
+      <div class="stats">
+        <div><strong>Rp1,5 jt</strong><span>harga mulai dari</span></div>
+        <div><strong>Real-time</strong><span>data dan kendali langsung</span></div>
+        <div><strong>Tanpa batas</strong><span>jumlah sensor dan alat</span></div>
+      </div>
+    </div>
+    <div class="mock" aria-hidden="true">
+      <div class="phones">
+        <div class="ph" style="transform:none"><div class="scr dk">
+          <div class="top dark"><small>Greenhouse · Blok A</small>Kendali Otomatis</div>
+          <div class="body">
+            <div class="info"><span>Kelembapan tanah</span><b id="hp-soil">48 %</b></div>
+            <div class="big-num" id="hp-temp">29,0°C</div>
+            <div class="sw">Pompa air <span class="tg off" id="hp-pump"></span></div>
+            <div class="sw">Kipas <span class="tg off" id="hp-fan"></span></div>
+            <div class="sw">Lampu tumbuh <span class="tg" id="hp-light"></span></div>
+          </div>
+        </div></div>
+      </div>
+      <div class="float" style="top:18%"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span><b>Pompa menyala otomatis</b>tanah mulai kering</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="label">Cara kerjanya</span><h2>Dari sensor ke layar HP Anda.</h2></div></div>
+    <div class="flow">
+      <div class="node"><span class="k">1 · Sensor</span><h3>Membaca kondisi</h3><p>Suhu, kelembapan, pH air, arus listrik, gerakan, dan lainnya.</p></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="node"><span class="k">2 · Kontroler</span><h3>Mengambil keputusan</h3><p>Perangkat kecil di lokasi menjalankan aturan otomatis Anda.</p></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="node"><span class="k">3 · Internet</span><h3>Mengirim data</h3><p>Data dikirim ke server lewat Wi-Fi atau jaringan seluler.</p></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="node"><span class="k">4 · Dashboard</span><h3>Anda memantau</h3><p>Grafik, riwayat, dan notifikasi di web dan aplikasi Android.</p></div>
+      <div class="arrow" aria-hidden="true">→</div>
+      <div class="node"><span class="k">5 · Aktuator</span><h3>Alat bergerak</h3><p>Pompa, lampu, kipas, atau pintu menyala sesuai perintah.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="iot-demo">
+  <div class="wrap">
+    <div class="demo">
+      <div style="min-width:0">
+        <span class="label">Simulasi · contoh greenhouse</span>
+        <h3>Coba kendalikan sendiri.</h3>
+        <div class="gauges">
+          <div class="gauge"><small>Tanah</small><strong id="g-soil">48%</strong><div class="meter"><i id="m-soil" style="width:48%"></i></div></div>
+          <div class="gauge"><small>Suhu</small><strong id="g-temp">29,0°</strong><div class="meter"><i id="m-temp" style="width:50%"></i></div></div>
+          <div class="gauge"><small>Udara</small><strong id="g-hum">70%</strong><div class="meter"><i id="m-hum" style="width:70%"></i></div></div>
+        </div>
+        <canvas id="iot-chart" width="800" height="240" aria-label="Grafik kelembapan tanah dan suhu"></canvas>
+        <div class="legend"><span><i style="background:#22c3e6"></i>Kelembapan tanah</span><span><i style="background:#f3c35a"></i>Suhu</span></div>
+      </div>
+      <div class="ctrls">
+        <label class="sw-row" for="sw-auto"><span>Mode otomatis<small>Pompa menyala saat tanah &lt; 35%, kipas saat suhu &gt; 31°C</small></span><input class="switch" type="checkbox" id="sw-auto" checked></label>
+        <label class="sw-row" for="sw-pump"><span>Pompa air</span><input class="switch" type="checkbox" id="sw-pump"></label>
+        <label class="sw-row" for="sw-fan"><span>Kipas</span><input class="switch" type="checkbox" id="sw-fan"></label>
+        <label class="sw-row" for="sw-light"><span>Lampu tumbuh</span><input class="switch" type="checkbox" id="sw-light" checked></label>
+        <div class="log" id="iot-log" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="label">Penerapan</span><h2>Bisa dipakai di banyak bidang.</h2></div>
+      <p>Setiap proyek kami sesuaikan dengan lokasi, alat, dan aturan kerja Anda.</p>
+    </div>
+    <div class="types uses">
+      <article class="type"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C12 7 8 4 3 4c0 5 4 8 9 8z"/><path d="M12 14c0-4 3-7 8-7 0 4-3 7-8 7z"/></svg></span><h3>Pertanian &amp; greenhouse</h3><p>Penyiraman otomatis berdasarkan kelembapan tanah, kontrol suhu dan lampu tumbuh.</p></article>
+      <article class="type"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c3-4 7-6 11-6 4 0 7 3 9 6-2 3-5 6-9 6-4 0-8-2-11-6z"/><circle cx="16" cy="11" r="1"/></svg></span><h3>Kolam &amp; tambak</h3><p>Pantau oksigen, pH, dan suhu air. Aerator menyala sendiri saat oksigen turun.</p></article>
+      <article class="type"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.8V4a2 2 0 1 0-4 0v10.8a4 4 0 1 0 4 0z"/></svg></span><h3>Gudang &amp; cold storage</h3><p>Suhu dan kelembapan tercatat 24 jam, dengan alarm ke HP saat melewati batas.</p></article>
+      <article class="type"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><h3>Rumah &amp; kantor</h3><p>Lampu, AC, dan pintu bisa dijadwal atau dikendalikan dari jauh.</p></article>
+      <article class="type"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><h3>Monitoring listrik</h3><p>Lihat pemakaian daya per mesin atau ruangan untuk menekan tagihan listrik.</p></article>
+      <article class="type"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></span><h3>Pabrik &amp; mesin</h3><p>Pantau kondisi mesin, hitung produksi, dan dapat peringatan sebelum mesin rusak.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="priceband">
+      <div>
+        <span class="label" style="color:rgba(255,255,255,.75)">Harga sistem IoT</span>
+        <span class="big">Rp1,5 jt – tanpa batas</span>
+        <p>Harga tergantung jumlah sensor, alat yang dikendalikan, dan luas area. Sudah termasuk dashboard untuk memantau dan mengendalikan secara real-time.</p>
+      </div>
+      <a class="btn btn-primary" href="#kontak">Konsultasi →</a>
+    </div>
+  </div>
+</section>
+</main>
+</div>
+
+<!-- ================= TENTANG KAMI ================= -->
+<div class="view" data-view="tentang" hidden>
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="pill"><span class="dot"></span>Tentang Interlude Media</span>
+      <h1>Seperti anak tangga, <span class="hl">bertahap sampai ke atas.</span></h1>
+      <p class="lead">Kami membangun semua kebutuhan Anda di dunia entertainment, media, dan sistem berbasis online. Kami bekerja mengikuti apa yang Anda inginkan, dengan satu tujuan: bisnis Anda tumbuh dan profit Anda naik.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#kontak">Mulai bersama kami →</a>
+        <a class="btn btn-ghost" href="#web">Lihat layanan</a>
+      </div>
+    </div>
+    <div class="mock" aria-hidden="true">
+      <div class="stairs">
+        <div class="stair"><span class="n">Anak tangga 1</span><h3>Kepercayaan</h3><p>Kita mulai dengan saling percaya.</p></div>
+        <div class="stair"><span class="n">Anak tangga 2</span><h3>Usaha</h3><p>Kami bekerja sungguh-sungguh untuk tujuan Anda.</p></div>
+        <div class="stair"><span class="n">Anak tangga 3</span><h3>Keberanian</h3><p>Berani memulai dan mencoba langkah baru.</p></div>
+        <div class="stair"><span class="n">Puncak</span><h3>Bisnis tumbuh</h3><p>Naik terus, satu anak tangga demi satu.</p></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="label">Bidang kami</span><h2>Satu tim untuk semua kebutuhan online Anda.</h2></div>
+      <p>Dari panggung hiburan sampai sistem di balik layar bisnis, kami siap membangunnya.</p>
+    </div>
+    <div class="fields">
+      <article class="type"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span><h3>Entertainment</h3><p>Website dan sistem untuk musisi, event, manajemen artis, dan dunia hiburan.</p></article>
+      <article class="type"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 8-6 4 6 4z"/></svg></span><h3>Media</h3><p>Portal berita, galeri, video, dan media digital yang mudah dikelola sendiri.</p></article>
+      <article class="type"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01"/></svg></span><h3>Sistem online</h3><p>Website, aplikasi Android, sistem bisnis, dan IoT yang bekerja untuk Anda 24 jam.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="label">Janji kami</span><h2>Kerja sama tidak berhenti saat proyek selesai.</h2></div></div>
+    <div class="promise">
+      <article class="type"><h3>Kami tidak melupakan partner</h3><p>Setiap klien yang pernah bekerja sama dengan kami adalah bagian dari perjalanan kami. Hubungan itu kami jaga.</p></article>
+      <article class="type"><h3>Selalu siap saat Anda kesulitan</h3><p>Kalau Anda menemui masalah di dunia internet, kami siap membantu dan mendukung sampai tuntas.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="quote">
+      <blockquote>Kesempatan tidak datang begitu saja. <span class="hl">Kesempatan itu dibuat.</span></blockquote>
+      <p>Tidak ada yang tidak mungkin bila dimulai dari kepercayaan, usaha, dan keberanian untuk memulai.</p>
+      <div class="trio"><span>Kepercayaan</span><span>Usaha</span><span>Keberanian</span></div>
+    </div>
+  </div>
+</section>
+</main>
+</div>
+
+<!-- CTA -->
+<footer class="cta" id="kontak">
+  <div class="wrap">
+    <div>
+      <h2>Siap punya website atau sistem sendiri?</h2>
+      <p>Konsultasi gratis. Ceritakan kebutuhan Anda, kami bantu pilihkan paket yang paling hemat.</p>
+    </div>
+    <div class="contact-card">
+      <span class="label">WhatsApp Interlude Media</span>
+      <div class="contact">
+        <span id="wa">0813-2525-4093</span>
+      </div>
+      <div class="contact">
+        <a class="btn wa-btn" href="https://wa.me/6281325254093?text=Halo%20Interlude%20Media%2C%20saya%20ingin%20konsultasi" target="_blank" rel="noopener">Chat WhatsApp</a>
+        <button class="btn btn-ghost" id="copy" type="button">Salin nomor</button>
+      </div>
+      <p class="small">Harga dalam Rupiah dan dapat berubah sesuai lingkup pekerjaan.<br>© 2026 Interlude Media · Partner Kreatif</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const btns=document.querySelectorAll('.toggle button');
+  function setMode(mode){
+    btns.forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.mode===mode)));
+    document.querySelectorAll('[data-mode-show]').forEach(el=>{el.hidden=el.dataset.modeShow!==mode;});
+    try{localStorage.setItem('mode',mode)}catch(e){}
+  }
+  btns.forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
+  try{if(localStorage.getItem('mode')==='langganan')setMode('langganan');}catch(e){}
+
+  const fmt=n=>'Rp'+n.toLocaleString('id-ID');
+  const plans={silver:{name:'Silver',buy:5000000,setup:2500000,monthly:150000},gold:{name:'Gold',buy:20000000,setup:10000000,monthly:1000000}};
+  const range=document.getElementById('m'),out=document.getElementById('m-out');
+  function row(l,v,max,win){return '<div class="row"><span>'+l+'</span><div class="track"><div class="fill'+(win?' win':'')+'" style="width:'+(v/max*100)+'%"></div></div><span class="v">'+fmt(v)+'</span></div>';}
+  function render(){
+    const m=+range.value;out.textContent=m+' bulan';
+    for(const k in plans){
+      const p=plans[k],sub=p.setup+p.monthly*m,buy=p.buy,max=Math.max(sub,buy);
+      const be=Math.ceil((p.buy-p.setup)/p.monthly);
+      const verdict=sub<buy?'Langganan lebih hemat':sub>buy?'Permanent lebih hemat':'Biayanya sama';
+      document.getElementById('cmp-'+k).innerHTML='<h3>'+p.name+'</h3>'+row('Permanent',buy,max,buy<=sub)+row('Langganan',sub,max,sub<=buy)+
+        '<p class="verdict"><span class="badge">'+verdict+'</span>Titik impas di bulan ke-'+be+'. Langganan sudah termasuk maintenance.</p>';
+    }
+  }
+  range.addEventListener('input',render);render();
+
+  document.getElementById('copy').addEventListener('click',function(){
+    const el=document.getElementById('wa'),btn=this;
+    const sel=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Tekan Ctrl+C';};
+    try{navigator.clipboard.writeText(el.textContent).then(()=>{btn.textContent='Tersalin';setTimeout(()=>btn.textContent='Salin nomor',1600)},sel);}catch(e){sel();}
+  });
+
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const c=document.getElementById('pulse'),x=c.getContext('2d');
+  const tEls=[document.getElementById('temp'),document.getElementById('t2')],hEl=document.getElementById('h2');
+  let t=0,last=0;
+  function draw(ts){
+    x.clearRect(0,0,c.width,c.height);
+    x.lineWidth=3;x.strokeStyle='rgba(255,255,255,.9)';x.beginPath();
+    for(let i=0;i<=c.width;i+=4){const y=c.height/2+Math.sin((i+t)/40)*28*Math.sin(i/200+.6)+Math.sin((i+t*1.6)/11)*6;i?x.lineTo(i,y):x.moveTo(i,y);}
+    x.stroke();
+    x.lineWidth=2;x.strokeStyle='rgba(243,195,90,.8)';x.beginPath();
+    for(let i=0;i<=c.width;i+=4){const y=c.height/2+20+Math.cos((i+t*.8)/55)*18;i?x.lineTo(i,y):x.moveTo(i,y);}
+    x.stroke();t+=1.5;
+    if(ts-last>1500){last=ts;const v=(24+Math.random()*1.4).toFixed(1).replace('.',',');tEls.forEach(e=>e.textContent=v+' °C');hEl.textContent=(59+Math.round(Math.random()*4))+' %';}
+    if(!reduce)requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+
+  // ===== Halaman (hash) =====
+  const VIEWS=['web','aplikasi','iot','tentang'];
+  function showView(v){
+    document.querySelectorAll('.view').forEach(el=>{el.hidden=el.dataset.view!==v;});
+    document.querySelectorAll('[data-nav]').forEach(a=>{if(a.dataset.nav===v)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+    window.scrollTo(0,0);
+  }
+  function route(){
+    const h=location.hash.slice(1);
+    if(VIEWS.includes(h)){showView(h);return;}
+    if(!h){showView('web');return;}
+    const target=document.getElementById(h);
+    if(target){const v=target.closest('.view');if(v&&v.hidden){showView(v.dataset.view);}target.scrollIntoView();}
+  }
+  addEventListener('hashchange',route);route();
+
+  // ===== Simulasi IoT =====
+  const S={soil:48,temp:29,hum:70,pump:false,fan:false,light:true,auto:true};
+  const hist={soil:[],temp:[]};
+  const $=id=>document.getElementById(id);
+  const sw={auto:$('sw-auto'),pump:$('sw-pump'),fan:$('sw-fan'),light:$('sw-light')};
+  const logEl=$('iot-log');
+  const names={pump:'Pompa air',fan:'Kipas',light:'Lampu tumbuh'};
+  const clock=()=>new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  function log(msg){const d=document.createElement('div');d.innerHTML='<b>'+clock()+'</b> '+msg;logEl.prepend(d);while(logEl.children.length>30)logEl.lastChild.remove();}
+  function setDev(k,on,why){if(S[k]===on)return;S[k]=on;sw[k].checked=on;log((why?why+': ':'Manual: ')+names[k]+' '+(on?'ON':'OFF'));paint();}
+  Object.keys(names).forEach(k=>sw[k].addEventListener('change',()=>setDev(k,sw[k].checked)));
+  sw.auto.addEventListener('change',()=>{S.auto=sw.auto.checked;log('Mode otomatis '+(S.auto?'aktif':'dimatikan'));});
+  const f1=n=>n.toFixed(1).replace('.',',');
+  function paint(){
+    $('g-soil').textContent=Math.round(S.soil)+'%';$('m-soil').style.width=S.soil+'%';
+    $('g-temp').textContent=f1(S.temp)+'°';$('m-temp').style.width=((S.temp-20)/20*100)+'%';
+    $('g-hum').textContent=Math.round(S.hum)+'%';$('m-hum').style.width=S.hum+'%';
+    $('hp-soil').textContent=Math.round(S.soil)+' %';$('hp-temp').textContent=f1(S.temp)+'°C';
+    ['pump','fan','light'].forEach(k=>$('hp-'+k).classList.toggle('off',!S[k]));
+  }
+  const cv=$('iot-chart'),cx=cv.getContext('2d');
+  function chart(){
+    const W=cv.width,H=cv.height,p=16;cx.clearRect(0,0,W,H);
+    cx.strokeStyle='rgba(255,255,255,.08)';cx.lineWidth=1;
+    for(let i=1;i<4;i++){const y=p+(H-2*p)*i/4;cx.beginPath();cx.moveTo(0,y);cx.lineTo(W,y);cx.stroke();}
+    const line=(arr,min,max,col)=>{if(arr.length<2)return;cx.strokeStyle=col;cx.lineWidth=3;cx.beginPath();
+      arr.forEach((v,i)=>{const x=W-(arr.length-1-i)*(W/59);const y=H-p-(v-min)/(max-min)*(H-2*p);i?cx.lineTo(x,y):cx.moveTo(x,y);});cx.stroke();
+      const v=arr[arr.length-1],y=H-p-(v-min)/(max-min)*(H-2*p);cx.fillStyle=col;cx.beginPath();cx.arc(W-5,y,5,0,7);cx.fill();};
+    line(hist.soil,0,100,'#22c3e6');line(hist.temp,20,40,'#f3c35a');
+  }
+  function tick(){
+    S.soil=Math.min(92,Math.max(8,S.soil+(S.pump?2.4:-1.1)+(Math.random()-.5)*.6));
+    S.temp=Math.min(38,Math.max(23,S.temp+(S.fan?-.32:.18)+(S.light?.04:-.04)+(Math.random()-.5)*.15));
+    S.hum=Math.min(95,Math.max(40,S.hum+(S.pump?.4:-.15)+(Math.random()-.5)*.8));
+    if(S.auto){
+      if(S.soil<35&&!S.pump)setDev('pump',true,'Otomatis (tanah '+Math.round(S.soil)+'%)');
+      else if(S.soil>68&&S.pump)setDev('pump',false,'Otomatis (tanah cukup basah)');
+      if(S.temp>31&&!S.fan)setDev('fan',true,'Otomatis (suhu '+f1(S.temp)+'°C)');
+      else if(S.temp<27.5&&S.fan)setDev('fan',false,'Otomatis (suhu normal)');
+    }
+    hist.soil.push(S.soil);hist.temp.push(S.temp);
+    if(hist.soil.length>60){hist.soil.shift();hist.temp.shift();}
+    paint();chart();
+  }
+  log('Perangkat terhubung · Greenhouse Blok A');
+  for(let i=0;i<20;i++)tick();
+  setInterval(tick,1000);
+})();
+</script>
+</body>
+</html>
